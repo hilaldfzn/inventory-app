@@ -36,7 +36,7 @@ MVVM (Model-View-ViewModel):
   <li>Template: Ini adalah komponen unik dari MVT yang mengontrol bagaimana data dari model akan ditampilkan dalam tampilan. Template digunakan untuk menghasilkan tampilan dinamis.</li>
 </ul>
 
---------------------------------------------------------PERBEDAAN UTAMA DARI MVC, MVT, MVVM----------------------------------------------------
+--------------------------------------------PERBEDAAN UTAMA DARI MVC, MVT, MVVM---------------------------------------------
 <ul>
   <li>MVC adalah pola arsitektur umum yang memisahkan model, view, dan controller.</li>
   <li>MVT adalah varian Django dari MVC dengan penekanan pada penggunaan template untuk mengatur tampilan.</li>
