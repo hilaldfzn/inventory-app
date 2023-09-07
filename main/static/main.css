@@ -1,0 +1,66 @@
+h1, h3, .profil, th, td {
+    color: #333;
+    text-align: center;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+.profil {
+    font-size: 16px;
+    color: #333;
+}
+
+.container-tabel {
+    background-color: #5F6F94;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.judul-tabel {
+    background-color: white;
+}
+
+.judul-tabel th {
+    font-weight: bold;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #ffe4b5;
+}
+
+/* Responsif untuk Tampilan pada Perangkat Mobile */
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    .profil {
+        font-size: 14px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+}

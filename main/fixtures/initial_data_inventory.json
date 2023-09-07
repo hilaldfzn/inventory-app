@@ -1,0 +1,62 @@
+[
+    {
+        "model": "main.inventoryitem",
+        "pk": 1,
+        "fields": {
+            "name": "Sword",
+            "amount": 100,
+            "description": "Pedang asli dari Dallas",
+            "price": 10000,
+            "power": 999,
+            "category": "Weapon"
+        }
+    },
+    {
+        "model": "main.inventoryitem",
+        "pk": 2,
+        "fields": {
+            "name": "Gun",
+            "amount": 50,
+            "description": "Tembakan asli dari Los Santos",
+            "price": 500000,
+            "power": 1500,
+            "category": "Weapon"
+        }
+    },
+    {
+        "model": "main.inventoryitem",
+        "pk": 3,
+        "fields": {
+            "name": "Geprak",
+            "amount": 20,
+            "description": "Enak sambal merahnya",
+            "price": 16000,
+            "power": 50,
+            "category": "Food"
+        }
+    },
+    {
+        "model": "main.inventoryitem",
+        "pk": 4,
+        "fields": {
+            "name": "Crisbar",
+            "amount": 180,
+            "description": "Enak tapi lumayan mahal",
+            "price": 21000,
+            "power": 1000,
+            "category": "Food"
+        }
+    },
+    {
+        "model": "main.inventoryitem",
+        "pk": 5,
+        "fields": {
+            "name": "Karimilk",
+            "amount": 15,
+            "description": "Susunya aja yang enak, makanan lain engga",
+            "price": 7000,
+            "power": 500,
+            "category": "Drink"
+        }
+    }
+]
