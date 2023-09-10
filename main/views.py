@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from main.models import InventoryItem
 
 def show_inventory(request):
-    initial_inventory_data = InventoryItem.objects.all()
     context = {
-        'list_items': initial_inventory_data,
-        'name': 'Muhammad Hilal Darul Fauzan',
-        'id': '2206830542'
+        'name': 'Katana',
+        'amount': 10,
+        'description': 'Katana is a sword with a curved blade longer than 60 cm fitted with an uchigatana-style mounting and worn in a waist sash with the cutting edge facing up.',
+        'price': 5000000,
+        'power': 75,
+        'category':'Melee'
     }
+
     return render(request, 'main.html', context)
