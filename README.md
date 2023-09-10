@@ -1,14 +1,14 @@
 # **Inventory App**
 
-## **Tugas 2 - Pemrograman Berbasis Platform**
+**Tugas 2 - Pemrograman Berbasis Platform**
 
 **Muhammad Hilal Darul Fauzan**<br/>
 **2206830542**<br/>
 **PBP C**<br/>
 
-Link deployment untuk menuju aplikasi Inventory App dapat diakses melalui [Inventory App](https://inventory-app.adaptable.app).
+Link deployment untuk menuju aplikasi Inventory App dapat diakses melalui [Inventory App](https://inventory-app.adaptable.app/main/).
 
-## **Inisiasi sebuah proyek Django baru**
+## **Membuat proyek Django baru**
 1. Buat direktori baru dengan nama yang Anda pilih, contohnya `django_project` kemudian buka *command prompt* (Windows) atau *terminal shell* (Linux/Mac) di dalam direktori tersebut.
 2. Buat *virtual environment* python untuk mengisolasi proyek Python kita dengan menggunakan perintah `python -m venv env`.
 3. Mengaktifkan *virtual environment* dengan perintah `env\Scripts\activate.bat` (Windows) atau `source env/bin/activate` (Linux/Mac). *Virtual environment* akan aktif dan ditandai dengan `(env)` di baris input terminal.
@@ -23,14 +23,14 @@ urllib3
 ```
 5. Install semua *dependencies* pada `requirements.txt` dengan perintah `python -m pip install -r requirements.txt`.
 6. Buat proyek Django dengan nama `inventory_app` menggunakan perintah `django-admin startproject inventory_app .`.
-7. Menambahkan `*` pada `ALLOWED_HOSTS` di dalam `settings.py` yang berada di dalam folder `inventory_app` untuk mengizinkan akses dari semua host.
+7. Menambahkan `*` pada `ALLOWED_HOSTS` di dalam `settings.py` yang berada di dalam direktori `inventory_app` untuk mengizinkan akses dari semua host.
 ```python
 ...
 ALLOWED_HOSTS = ["*"]
 ...
 ```
 8. Kembali ke *command prompt* atau *terminal shell* dan jalankan server dengan perintah `python manage.py runserver` di dalam direktori proyek (pastikan ada file `manage.py` di sana). Lalu akses http://localhost:8000 di peramban web untuk melihat animasi roket yang menandakan bahwa aplikasi Django Anda telah berhasil dibuat.
-9. Untuk menghentikan server, cukup dengan menekan tombol `Ctrl+C` di *Command Prompt* atau *terminal shell*. Pastikan juga untuk menonaktifkan *virtual environment* dengan menggunakan perintah `deactivate`.
+9. Untuk menghentikan server, cukup dengan menekan tombol `Ctrl+C` di *command prompt* atau *terminal shell*. Pastikan juga untuk menonaktifkan *virtual environment* dengan menggunakan perintah `deactivate`.
 10. Buat `.gitignore` yang berisi file yang tidak diperlukan agar tidak memenuhi space.
 ```.gitignore
 # Django
@@ -174,7 +174,7 @@ GitHub.sublime-settings
 
 ## **Membuat aplikasi dengan nama `main` pada proyek**
 1. Buka *command prompt* pada direktori utama dan aktifkan *virtual environment* dengan perintah `env\Scripts\activate.bat`.
-2. Membuat aplikasi `main` dengan perintah `python manage.py startapp main`
+2. Buat aplikasi `main` dengan perintah `python manage.py startapp main`
 3. Mendaftarkan aplikasi `main` ke proyek dengan menambahkan `'main'` pada `INSTALLED_APPS` di dalam file `settings.py`.
 ```python
 INSTALLED_APPS = [
@@ -182,115 +182,6 @@ INSTALLED_APPS = [
     'main',
     ...
 ]
-```
-4. Buat direktori baru bername `templates` di dalam direktori aplikasi `main`. Di dalamnya, buat file `main.html` serta modifikasi dengan memasukan rancangan.
-```html
-<html>
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Inventory App Page</title>
-
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
-      <style>
-        * {
-          font-family: 'Poppins', sans-serif;
-          cursor: pointer;
-        }
-
-        body {
-          margin-top: 32px;
-          text-align: center;
-        }
-
-        h1, h2, .profil, th, td {
-          color: #333;
-        }
-
-        h1 {
-          font-size: 36px;
-          color: #25316D;
-          margin-bottom: 10px;
-        }
-
-        h2 {
-          font-size: 18px;
-        }
-
-        .profil {
-          font-size: 16px;
-        }
-
-        .container-tabel {
-          display: flex; 
-          justify-content: center;
-          background-color: #5F6F94;
-          border-radius: 10px;
-          padding: 20px;
-          margin-top: 20px;
-          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        table {
-          width: 100%;
-        }
-
-        .judul-tabel {
-          background-color: #ffe4b5;
-        }
-
-        .judul-tabel th {
-          font-weight: bold;
-        }
-
-        th, td {
-          font-size: 16px;
-          border: 1px solid black;
-          padding: 10px 24px;
-          font-weight: 400;
-          border: 2px solid #25316D;
-        }
-
-        tr:nth-child(even) {
-          background-color: white;
-        }
-      </style>
-  </head>
-  <body>
-    <h1>Inventory App Page</h1>
-    <h2>Tugas 2 - Pemrograman Berbasis Platform</h3>
-
-    <div class="profil">
-      <p>Nama: Muhammad Hilal Darul Fauzan</p>
-      <p>NPM: 2206830542</p>
-    </div>
-
-    <div class="container-tabel">
-      <table>
-        <tr class="judul-tabel">
-          <th>Name</th>
-          <th>Amount</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Power</th>
-          <th>Category</th>
-        </tr>
-
-        <tr>
-            <th>{{ name }}</th>
-            <th>{{ amount }}</th>
-            <th>{{ description }}</th>
-            <th>Rp. {{ price }},-</th>
-            <th>{{ power }}</th>
-            <th>{{ category }}</th>
-        </tr>
-      </table>
-    </div>
-  </body>
-</html>
 ```
  
 ## **Melakukan routing pada proyek agar dapat menjalankan aplikasi `main`**
@@ -325,8 +216,8 @@ urlpatterns = [
 1. Pada langkah ini, ubah file `models.py` yang terdapat di dalam direktori aplikasi `main` untuk mendefinisikan model baru dengan nama `InventoryItem` dan memiliki atribut wajib sebagai berikut.
 * `name` sebagai nama item dengan tipe `CharField`.
 * `amount` sebagai jumlah item dengan tipe `IntegerField`.
-* `description` sebagai deskripsi item dengan tipe `TextField`.
-
+* `description` sebagai deskripsi item dengan tipe `TextField`.<br/>
+Dipersilakan untuk menambahkan atribut lainnya jika diinginkan, seperti `price`, `power`, `category`. Namun, model aplikasi Anda wajib memiliki ketiga atribut wajib di atas (`name`, `amount`, `description`).
 2. Isi file `models.py` dengan kode berikut.
 ```python
 from django.db import models
@@ -341,8 +232,15 @@ class InventoryItem(models.Model):
 ```
 3. Jalankan perintah `python manage.py makemigrations` untuk membuat migrasi model lalu jalankan perintah `python manage.py migrate` untuk menerapkan migrasi ke dalam basis data lokal.
 
+[!IMPORTANT]
+> Setiap kali melakukan perubahan pada model, seperti menambahkan atau mengubah atribut, perlu melakukan migrasi untuk merefleksikan perubahan tersebut.
+
 ## **Membuat sebuah fungsi pada `views.py` untuk dikembalikan ke dalam sebuah template HTML**
-Integrasikan komponen MVT dengan melakukan modifikasi pada file `views.py` yang terletak dalam direktori `main`.
+Integrasikan komponen MVT dengan melakukan modifikasi pada file `views.py` yang terletak pada direktori `main`.
+
+1. Buat direktori baru bernama `templates` di dalam direktori aplikasi `main` buat file `main.html` di dalamnya.
+2. Buka file `views.py` pada direktori `main` dan tambahkan baris kode di paling atas `from django.shortcuts import render`. Ini akan mengimpor fungsi render dari modul django.shortcuts, yang akan digunakan untuk melakukan proses rendering tampilan HTML dengan menggunakan data yang diberikan.
+3. Buat fungsi `show_inventory` dengan parameter `request`. Di dalam fungsi ini, buatlah sebuah dictionary `context` yang berisi data yang akan dikirimkan ke tampilan. Setelah itu, gunakan fungsi `render` dengan tiga argumen, yaitu `request` (objek permintaan HTTP yang dikirim oleh pengguna), nama file HTML yang akan digunakan untuk me-render tampilan, dan `context` (dictionary yang berisi data untuk digunakan dalam tampilan yang dinamis). Setelah itu, kembalikan hasil rendering tersebut.
 ```python
 from django.shortcuts import render
 
@@ -358,9 +256,10 @@ def show_inventory(request):
 
     return render(request, 'main.html', context)
 ```
+4. Buka file `main.html` yang telah dibuat sebelumnya dan lakukan perubahan pada kode yang tadinya statis menjadi kode Django yang sesuai untuk menampilkan data. Gunakan sintaks Django `{{ }}` untuk memasukkan data dari `context` yang telah dikirimkan oleh fungsi `show_main`.
 
 ## **Membuat sebuah routing pada `urls.py` aplikasi main untuk memetakan fungsi yang telah dibuat pada `views.py`**
-Konfigurasi routing URL aplikasi `main` dengan melakukan perubahan pada file `urls.py` yang berada dalam direktori `main`.
+Jika belum ada, buat file `urls.py` di dalam direktori main. Konfigurasi routing URL aplikasi `main` dengan melakukan perubahan pada file `urls.py` yang berada dalam direktori `main`.
 ```python
 from django.urls import path
 from main.views import show_inventory
@@ -384,7 +283,21 @@ urlpatterns = [
 9. Masukkan nama aplikasi yang juga akan menjadi nama domain situs web aplikasimu.
 10. Centang bagian `HTTP Listener on PORT` dan klik `Deploy App` untuk memulai proses deployment aplikasi.
 
-## **Client Request and Response - Django**
+## **Bagan Client Request and Response - Django**
+![Alt text](<Bagan Client Request and Response - Django.png>)
+Penjelasan bagan:
+1. Client membuka browser untuk mengakses website
+2. Client memasuki website dan server web melayani request dari client.
+3. WSGI memproses server HTTP untuk website berbasis Python.
+4. Middleware berfungsi sebagai penghubung untuk mengintegrasikan teknologi yang digunakan dalam proyek untuk memproses request.
+5. URL Router mengarahkan alamat proyek sesuai request dari client (urls.py), kemudian mengarahkannya ke fungsi yang ada di views.py.
+6. Views (views.py) bertanggung jawab untuk merangkai konten yang akan ditampilkan dalam template HTML. Data yang diproses diambil dari basis data yang telah diorganisir menggunakan ORM dalam models.py.
+7. Context processor mengirimkan data dari views.py ke template HTML.
+8. Template HTML menampilkan tampilan depan proyek berdasarkan data konteks yang dikirimkan dari views.py dan mengikuti logika template tags.
+9. Middleware berfungsi sebagai penghubung untuk mengintegrasikan teknologi yang digunakan dalam proyek untuk memproses response.
+10. WSGI memproses server HTTP untuk website berbasis Python.
+11. Web server melayani response dari server untuk dikirimkan ke client.
+12. Client menerima respons dari web server.
 
 ## **Mengapa kita perlu menggunakan *virtual environment*?**
 *Virtual environment* diperlukan agar sistem dapat berjalan di lingkungan terisolasi. Di mana setiap proyek memiliki kebutuhan/dependensi yang berbeda-beda antara proyek satu dengan proyek yang lainnya. Dengan menggunakan *virtual environment*, maka proyek dapat berjalan sesuai dependensinya tanpa melakukan konfigurasi pada sistem operasi yang digunakan. File `requirements.txt` digunakan sebagai pencatatan daftar dependensi dari suatu proyek yang dijalankan dalam *virtual environment* tertentu. Hanya dengan mengetahui daftar dependensi yang ada melalui `requirements.txt` sebuah mesin host contohnya `Adaptable`, dapat mengetahui apa saja dependensi yang harus digunakan untuk menjalankan server. Hal ini juga memudahkan dalam proses penyimpanan di mana user tidak perlu melakukan push pada *virtual environment* karena sudah dicatat dengan baik di `requirements.txt` (*virtual environment* adalah direktori yang cukup memakan penyimpanan repository/host sehingga menghilangkannya dengan `.gitignore`).
