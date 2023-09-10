@@ -10,7 +10,7 @@ Link deployment untuk menuju aplikasi Inventory App dapat diakses melalui [Inven
 
 ## **Membuat proyek Django baru**
 1. Buat direktori baru dengan nama yang Anda pilih, contohnya `django_project` kemudian buka *command prompt* (Windows) atau *terminal shell* (Linux/Mac) di dalam direktori tersebut.
-2. Buat *virtual environment* python untuk mengisolasi proyek Python kita dengan menggunakan perintah `python -m venv env`.
+2. Buat *virtual environment* Python untuk mengisolasi proyek Python kita dengan menggunakan perintah `python -m venv env`.
 3. Mengaktifkan *virtual environment* dengan perintah `env\Scripts\activate.bat` (Windows) atau `source env/bin/activate` (Linux/Mac). *Virtual environment* akan aktif dan ditandai dengan `(env)` di baris input terminal.
 4. Buat file `requirements.txt` di dalam direktori proyek dan isi dengan daftar *dependencies* yang dibutuhkan untuk proyek Anda. Contoh beberapa *dependencies* yang akan digunakan sebagai berikut.
 ```txt
@@ -232,12 +232,10 @@ class InventoryItem(models.Model):
 ```
 3. Jalankan perintah `python manage.py makemigrations` untuk membuat migrasi model lalu jalankan perintah `python manage.py migrate` untuk menerapkan migrasi ke dalam basis data lokal.
 
-[!IMPORTANT]
+> [!IMPORTANT]
 > Setiap kali melakukan perubahan pada model, seperti menambahkan atau mengubah atribut, perlu melakukan migrasi untuk merefleksikan perubahan tersebut.
 
 ## **Membuat sebuah fungsi pada `views.py` untuk dikembalikan ke dalam sebuah template HTML**
-Integrasikan komponen MVT dengan melakukan modifikasi pada file `views.py` yang terletak pada direktori `main`.
-
 1. Buat direktori baru bernama `templates` di dalam direktori aplikasi `main` buat file `main.html` di dalamnya.
 2. Buka file `views.py` pada direktori `main` dan tambahkan baris kode di paling atas `from django.shortcuts import render`. Ini akan mengimpor fungsi render dari modul django.shortcuts, yang akan digunakan untuk melakukan proses rendering tampilan HTML dengan menggunakan data yang diberikan.
 3. Buat fungsi `show_inventory` dengan parameter `request`. Di dalam fungsi ini, buatlah sebuah dictionary `context` yang berisi data yang akan dikirimkan ke tampilan. Setelah itu, gunakan fungsi `render` dengan tiga argumen, yaitu `request` (objek permintaan HTTP yang dikirim oleh pengguna), nama file HTML yang akan digunakan untuk me-render tampilan, dan `context` (dictionary yang berisi data untuk digunakan dalam tampilan yang dinamis). Setelah itu, kembalikan hasil rendering tersebut.
@@ -286,8 +284,8 @@ urlpatterns = [
 ## **Bagan Client Request and Response - Django**
 ![Alt text](<Bagan Client Request and Response - Django.png>)
 Penjelasan bagan:
-1. Client membuka browser untuk mengakses website
-2. Client memasuki website dan server web melayani request dari client.
+1. Client membuka browser untuk mengakses website.
+2. Client memasuki website dan web server melayani request dari client.
 3. WSGI memproses server HTTP untuk website berbasis Python.
 4. Middleware berfungsi sebagai penghubung untuk mengintegrasikan teknologi yang digunakan dalam proyek untuk memproses request.
 5. URL Router mengarahkan alamat proyek sesuai request dari client (urls.py), kemudian mengarahkannya ke fungsi yang ada di views.py.
@@ -297,13 +295,13 @@ Penjelasan bagan:
 9. Middleware berfungsi sebagai penghubung untuk mengintegrasikan teknologi yang digunakan dalam proyek untuk memproses response.
 10. WSGI memproses server HTTP untuk website berbasis Python.
 11. Web server melayani response dari server untuk dikirimkan ke client.
-12. Client menerima respons dari web server.
+12. Client menerima response dari web server.
 
 ## **Mengapa kita perlu menggunakan *virtual environment*?**
 *Virtual environment* diperlukan agar sistem dapat berjalan di lingkungan terisolasi. Di mana setiap proyek memiliki kebutuhan/dependensi yang berbeda-beda antara proyek satu dengan proyek yang lainnya. Dengan menggunakan *virtual environment*, maka proyek dapat berjalan sesuai dependensinya tanpa melakukan konfigurasi pada sistem operasi yang digunakan. File `requirements.txt` digunakan sebagai pencatatan daftar dependensi dari suatu proyek yang dijalankan dalam *virtual environment* tertentu. Hanya dengan mengetahui daftar dependensi yang ada melalui `requirements.txt` sebuah mesin host contohnya `Adaptable`, dapat mengetahui apa saja dependensi yang harus digunakan untuk menjalankan server. Hal ini juga memudahkan dalam proses penyimpanan di mana user tidak perlu melakukan push pada *virtual environment* karena sudah dicatat dengan baik di `requirements.txt` (*virtual environment* adalah direktori yang cukup memakan penyimpanan repository/host sehingga menghilangkannya dengan `.gitignore`).
 
 ## **Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan *virtual environment*?**
-Meskipun memungkinkan, namun tidak dianjurkan untuk membuat aplikasi web berbasis Django tanpa *virtual environment*, terutama jika Anda berencana untuk meng-hostnya secara online. Jika Anda hanya menjalankan proyek secara lokal di komputer Anda sendiri, Anda mungkin bisa menggunakan environment Python bawaan (root) dan menginstal semua dependensi proyek di sana. Tetapi ketika Anda ingin meng-host aplikasi tersebut di layanan hosting online, seperti Adaptable, akan menjadi masalah. Server hosting akan mencari `requirements.txt` untuk mengetahui dependensi yang diperlukan. Jika Anda tidak menggunakan *virtual environment* untuk mencatat dependensi ini, maka proyek Anda mungkin tidak akan berjalan dengan baik atau sama sekali di lingkungan hosting tersebut. Oleh karena itu, sangat disarankan untuk menggunakan *virtual environment* dalam pengembangan aplikasi Django untuk memastikan kelancaran di berbagai lingkungan hosting.
+Meskipun memungkinkan, namun tidak dianjurkan untuk membuat aplikasi web berbasis Django tanpa *virtual environment*, terutama jika Anda berencana untuk meng-hostnya secara online. Jika Anda hanya menjalankan proyek secara lokal di komputer Anda sendiri, mungkin bisa menggunakan environment Python bawaan (root) dan menginstal semua dependensi proyek di sana. Tetapi ketika Anda ingin meng-host aplikasi tersebut di layanan hosting online, seperti Adaptable, akan menjadi masalah. Server hosting akan mencari `requirements.txt` untuk mengetahui dependensi yang diperlukan. Jika tidak menggunakan *virtual environment* untuk mencatat dependensi ini, maka proyek Anda mungkin tidak akan berjalan dengan baik atau tidak berjalan sama sekali di lingkungan hosting tersebut. Oleh karena itu, sangat disarankan untuk menggunakan *virtual environment* dalam pengembangan aplikasi Django untuk memastikan kelancaran di berbagai lingkungan hosting.
 
 ## **Apa itu MVC, MVT, MVVM? Apa saja perbedaan dari ketiganya?**
 MVC (Model-View-Controller), MVT (Model-View-Template), dan MVVM (Model-View-ViewModel) adalah pola arsitektur perangkat lunak yang digunakan dalam pengembangan aplikasi untuk memisahkan komponen-komponen yang berbeda dalam aplikasi agar lebih terstruktur dan mudah dikelola. Meskipun mereka memiliki kesamaan dalam memisahkan tugas-tugas, mereka digunakan dalam konteks yang berbeda dan memiliki perbedaan dalam cara mereka mengorganisasi komponen-komponen tersebut.
