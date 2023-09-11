@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ["*"]
 ```
 8. Kembali ke *command prompt* atau *terminal shell* dan jalankan server dengan perintah `python manage.py runserver` di dalam direktori proyek (pastikan ada file `manage.py` di sana). Lalu akses http://localhost:8000 di peramban web untuk melihat animasi roket yang menandakan bahwa aplikasi Django Anda telah berhasil dibuat.
 9. Untuk menghentikan server, cukup dengan menekan tombol `Ctrl+C` di *command prompt* atau *terminal shell*. Pastikan juga untuk menonaktifkan *virtual environment* dengan menggunakan perintah `deactivate`.
-10. Buat `.gitignore` yang berisi file yang tidak diperlukan agar tidak memenuhi space.
+10. Buat `.gitignore` yang berisi file yang tidak diperlukan agar tidak memenuhi space. Berikut adalah contoh isi dari `.gitignore`.
 ```.gitignore
 # Django
 *.log
@@ -281,8 +281,38 @@ urlpatterns = [
 9. Masukkan nama aplikasi yang juga akan menjadi nama domain situs web aplikasimu.
 10. Centang bagian `HTTP Listener on PORT` dan klik `Deploy App` untuk memulai proses deployment aplikasi.
 
+## **Bonus**
+Pada file `tests.py` buat testing tambahan selain yang diajarkan di tutorial.
+```python
+from django.test import TestCase, Client
+
+class mainTest(TestCase):
+    def test_main_url_is_exist(self):
+        response = Client().get('/main/')
+        self.assertEqual(response.status_code, 200)
+
+    def test_main_using_main_template(self):
+        response = Client().get('/main/')
+        self.assertTemplateUsed(response, 'main.html')
+
+    def test_response_has_utf8_charset(self):
+        response = Client().get('/main/')
+        content_type = response.get('Content-Type', '')
+        self.assertIn('utf-8', content_type.lower())
+    
+    def test_item_detail(self):
+        response = Client().get('/main/')
+        self.assertContains(response, 'Katana')
+        self.assertContains(response, 10)
+        self.assertContains(response, 'Katana is a sword with a curved blade longer than 60 cm fitted with an uchigatana-style mounting and worn in a waist sash with the cutting edge facing up.')
+        self.assertContains(response, 'Rp. 5000000,-')
+        self.assertContains(response, '75')
+        self.assertContains(response, 'Melee')
+```
+
+
 ## **Bagan Client Request and Response - Django**
-![Alt text](<Bagan Client Request and Response - Django.png>)
+![alt-text](image/bagan.png)
 Penjelasan bagan:
 1. Client membuka browser untuk mengakses website.
 2. Client memasuki website dan web server melayani request dari client.
@@ -304,25 +334,30 @@ Penjelasan bagan:
 Meskipun memungkinkan, namun tidak dianjurkan untuk membuat aplikasi web berbasis Django tanpa *virtual environment*, terutama jika Anda berencana untuk meng-hostnya secara online. Jika Anda hanya menjalankan proyek secara lokal di komputer Anda sendiri, mungkin bisa menggunakan environment Python bawaan (root) dan menginstal semua dependensi proyek di sana. Tetapi ketika Anda ingin meng-host aplikasi tersebut di layanan hosting online, seperti Adaptable, akan menjadi masalah. Server hosting akan mencari `requirements.txt` untuk mengetahui dependensi yang diperlukan. Jika tidak menggunakan *virtual environment* untuk mencatat dependensi ini, maka proyek Anda mungkin tidak akan berjalan dengan baik atau tidak berjalan sama sekali di lingkungan hosting tersebut. Oleh karena itu, sangat disarankan untuk menggunakan *virtual environment* dalam pengembangan aplikasi Django untuk memastikan kelancaran di berbagai lingkungan hosting.
 
 ## **Apa itu MVC, MVT, MVVM? Apa saja perbedaan dari ketiganya?**
-MVC (Model-View-Controller), MVT (Model-View-Template), dan MVVM (Model-View-ViewModel) adalah pola arsitektur perangkat lunak yang digunakan dalam pengembangan aplikasi untuk memisahkan komponen-komponen yang berbeda dalam aplikasi agar lebih terstruktur dan mudah dikelola. Meskipun mereka memiliki kesamaan dalam memisahkan tugas-tugas, mereka digunakan dalam konteks yang berbeda dan memiliki perbedaan dalam cara mereka mengorganisasi komponen-komponen tersebut.
+MVC (Model-View-Controller), MVT (Model-View-Template), dan MVVM (Model-View-ViewModel) adalah kerangka kerja arsitektur perangkat lunak yang digunakan dalam pengembangan aplikasi untuk memisahkan berbagai komponen aplikasi dan membuatnya lebih terstruktur serta mudah dikelola. Meskipun mereka memiliki konsep dasar yang serupa dalam pembagian tugas, mereka digunakan dalam konteks yang berbeda dan memiliki perbedaan dalam pengorganisasian komponen-komponen tersebut.
 
 ### **MVC (Model-View-Controller)**
 | **Model** | **View** | **Controller** |
 | --- | --- | --- |
-| Bertanggung jawab untuk mengelola dan pemrosesan data serta logika bisnis dalam aplikasi. | Menampilkan data kepada pengguna dan mengatur tampilan aplikasi. Ini berhubungan dengan tampilan antarmuka pengguna. | Berperan sebagai perantara antara Model dan View. Controller mengendalikan alur logika bisnis dan menerima input dari pengguna. |
+| Mengurus representasi data serta aturan bisnis dalam sebuah aplikasi. Bagian ini bertanggung jawab untuk mengakses dan mengelola data, baik yang berasal dari basis data atau sumber lainnya. Model juga merancang logika bisnis seperti validasi data dan perhitungan. Sebagai contoh, dalam pengembangan aplikasi e-commerce, model akan mengatur cara penyimpanan dan akses data terkait produk, pelanggan, dan pesanan. | Komponen yang mengurus tampilan yang diperlihatkan kepada pengguna. Ini adalah aspek yang terlihat oleh pengguna ketika mereka berinteraksi dengan aplikasi yang sedang kita kembangkan. Tugas utama dari View adalah untuk menampilkan data yang berasal dari Model ke layar. Misalnya, dalam konteks aplikasi e-commerce, View akan bertanggung jawab dalam menampilkan daftar produk dan rincian pesanan kepada pengguna. | Bagian yang berfungsi sebagai perantara antara Model dan View. Komponen ini mengontrol alur informasi dalam aplikasi. Controller bertanggung jawab untuk menangani permintaan yang diajukan oleh pengguna, mengolahnya, dan mengirimkannya ke Model untuk memperbarui data atau mengambil data yang diperlukan. Sebagai contoh dalam aplikasi e-commerce, jika pengguna menambahkan produk ke dalam keranjang belanja, Controller akan mengelola proses agar Model dapat menyimpan data tersebut dan selanjutnya memberi tahu View untuk memperbarui tampilannya. |
   
 ### **MVT (Model-View-Template)**
 | **Model** | **View** | **Template** |
 | --- | --- | --- |
-| Mirip dengan MVC, mengatur data dan logika bisnis. | Menampilkan data kepada pengguna. Namun, dalam konteks Django (kerangka kerja web Python yang menggunakan pola MVT), view juga mengatur alur logika presentasi. | Ini adalah komponen unik dari MVT yang mengontrol bagaimana data dari model akan ditampilkan dalam tampilan. Template digunakan untuk menghasilkan tampilan dinamis. |
+| Mirip dengan MVC, dalam konsep MVT, Model adalah elemen yang bertugas mengorganisir dan mengelola data aplikasi. Model menggambarkan struktur data dan logika yang berada di latar belakang tampilan. Fungsinya mencakup penghubungan aplikasi dengan basis data dan mengatur cara interaksi dengan data tersebut. | Komponen yang mengelola logika tampilan dalam kerangka kerja MVT. View ini mengendalikan cara data yang dikelola oleh Model dipresentasikan kepada pengguna. Dalam konteks MVT, View berperan sebagai pengendali yang menampilkan data dan mengambilnya dari Model untuk kemudian disajikan kepada pengguna. | Komponen yang mengurusi tampilan pengguna, seperti halaman web. Dalam kerangka kerja seperti Django, Template digunakan untuk merancang antarmuka halaman web yang dinamis dan mengintegrasikan data dari Model sehingga pengguna dapat melihat informasi yang dipresentasikan melalui View. |
 
 ### **MVVM (Model-View-ViewModel)**
 | **Model** | **View** | **ViewModel** |
 | --- | --- | --- |
-| Sama dengan dalam MVC dan MVT, mengelola data dan logika bisnis. | Menampilkan tampilan kepada pengguna, tetapi dengan perbedaan bahwa View di MVVM lebih pasif dan hanya menampilkan data yang disediakan oleh ViewModel. | Bertindak sebagai perantara antara Model dan View. Ini mengelola data yang akan ditampilkan di View dan mengatur logika presentasi. |
+| Elemen yang mengatur data dan logika aplikasi, mirip dengan peran Model dalam kerangka kerja MVC dan MVT. Model dan ViewModel dalam MVVM akan bekerja bersama-sama untuk mengambil dan menyimpan data. | Komponen yang memperlihatkan antarmuka pengguna dan berfungsi untuk memberitahu ViewModel tentang tindakan yang dilakukan pengguna. Tetapi, dalam MVVM, View berperan sebagai penampil yang hanya menampilkan data dan tidak mengandung logika aplikasi apa pun. | Sebagai salah satu komponen kunci dalam MVVM, ViewModel berperan sebagai penghubung antara Model dan View. Tugasnya adalah mengubah data dari Model ke dalam format yang dapat disajikan oleh View dan mengelola logika tampilan. |
 
 
 ### **Perbedaan MVC, MVT, dan MVVM**
-* MVC adalah pola arsitektur umum yang memisahkan model, view, dan controller.
-* MVT adalah varian Django dari MVC dengan penekanan pada penggunaan template untuk mengatur tampilan.
-* MVVM adalah pola yang biasanya digunakan dalam pengembangan aplikasi berbasis antarmuka pengguna yang memerlukan tampilan yang dinamis, dengan ViewModel sebagai perantara antara model dan view.
+* #### **MVC**
+    MVC adalah pola desain yang luasnya diterapkan dalam berbagai jenis aplikasi, termasuk desktop, web, dan mobile. Dalam MVC, Controller memainkan peran penting dalam mengatur aliran informasi antara Model dan View, meskipun ada situasi di mana Model dan View dapat berinteraksi langsung. Ini mengedepankan pemisahan tugas, dengan Model mengelola data dan logika bisnis, View menampilkan data, dan Controller mengelola aliran informasi. Namun, dalam MVC, pengembang sering harus secara manual mengurus pembaruan tampilan ketika data berubah, yang dapat memerlukan kode tambahan.
+
+* #### **MVT**
+    MVT adalah konsep yang khususnya digunakan dalam pengembangan web dengan kerangka kerja Django berbasis Python. Salah satu komponennya, yaitu Template (dalam MVT Django), mengkhususkan diri dalam mengatur tampilan halaman web, sementara Model dan View berperan serupa dengan MVC. Template adalah komponen tambahan yang tidak ada dalam MVC tradisional, dan Django memiliki alat bawaan untuk mengelola pembaruan tampilan secara otomatis saat data berubah.
+
+* #### **MVVM**
+    MVVM sering digunakan dalam pengembangan aplikasi berbasis antarmuka pengguna (UI), seperti aplikasi mobile atau desktop. Ini fokus pada pemisahan tugas tampilan dan logika dalam UI, dengan ViewModel bertindak sebagai penghubung antara Model dan View, mengurangi ketergantungan antara keduanya. MVVM menggunakan sistem pengikatan data (data binding) untuk otomatis memperbarui tampilan ketika data berubah di ViewModel. Meskipun ini mengurangi kode boilerplate untuk pembaruan tampilan, penggunaan data binding yang kompleks dapat membuat debugging aplikasi menjadi sedikit lebih rumit.

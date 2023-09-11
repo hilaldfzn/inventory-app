@@ -13,3 +13,12 @@ class mainTest(TestCase):
         response = Client().get('/main/')
         content_type = response.get('Content-Type', '')
         self.assertIn('utf-8', content_type.lower())
+    
+    def test_item_detail(self):
+        response = Client().get('/main/')
+        self.assertContains(response, 'Katana')
+        self.assertContains(response, 10)
+        self.assertContains(response, 'Katana is a sword with a curved blade longer than 60 cm fitted with an uchigatana-style mounting and worn in a waist sash with the cutting edge facing up.')
+        self.assertContains(response, 'Rp. 5000000,-')
+        self.assertContains(response, '75')
+        self.assertContains(response, 'Melee')
