@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ["*"]
 ```
 8. Kembali ke *command prompt* atau *terminal shell* dan jalankan server dengan perintah `python manage.py runserver` di dalam direktori proyek (pastikan ada file `manage.py` di sana). Lalu akses http://localhost:8000 di peramban web untuk melihat animasi roket yang menandakan bahwa aplikasi Django Anda telah berhasil dibuat.
 9. Untuk menghentikan server, cukup dengan menekan tombol `Ctrl+C` di *command prompt* atau *terminal shell*. Pastikan juga untuk menonaktifkan *virtual environment* dengan menggunakan perintah `deactivate`.
-10. Buat `.gitignore` yang berisi file yang tidak diperlukan agar tidak memenuhi space. Berikut adalah contoh isi dari `.gitignore`.
+10. Buat file `.gitignore` untuk menentukan berkas-berkas dan direktori-direktori yang harus diabaikan oleh Git. Isilah file tersebut dengan teks berikut.
 ```.gitignore
 # Django
 *.log
@@ -168,7 +168,7 @@ GitHub.sublime-settings
 !.vscode/settings.json 
 !.vscode/tasks.json 
 !.vscode/launch.json 
-!.vscode/extensions.json 
+!.vscode/extensions.json
 .history
 ```
 
@@ -281,10 +281,11 @@ urlpatterns = [
 9. Masukkan nama aplikasi yang juga akan menjadi nama domain situs web aplikasimu.
 10. Centang bagian `HTTP Listener on PORT` dan klik `Deploy App` untuk memulai proses deployment aplikasi.
 
-## **Bonus**
-Pada file `tests.py` buat testing tambahan selain yang diajarkan di tutorial.
+## **Bonus: Membuat Unit Test**
+Pada file `tests.py`, saya membuat testing tambahan selain yang diajarkan di tutorial.
 ```python
 from django.test import TestCase, Client
+from main.models import InventoryItem
 
 class mainTest(TestCase):
     def test_main_url_is_exist(self):
@@ -300,16 +301,52 @@ class mainTest(TestCase):
         content_type = response.get('Content-Type', '')
         self.assertIn('utf-8', content_type.lower())
     
-    def test_item_detail(self):
-        response = Client().get('/main/')
-        self.assertContains(response, 'Katana')
-        self.assertContains(response, 10)
-        self.assertContains(response, 'Katana is a sword with a curved blade longer than 60 cm fitted with an uchigatana-style mounting and worn in a waist sash with the cutting edge facing up.')
-        self.assertContains(response, 'Rp. 5000000,-')
-        self.assertContains(response, '75')
-        self.assertContains(response, 'Melee')
-```
+    def test_inventory_items_displayed(self):
+        response = self.client.get('/main/')
+        for item in InventoryItem.objects.all():
+            self.assertContains(response, item.name)
+            self.assertContains(response, f'{item.price} BP')
+            self.assertContains(response, item.category)
 
+    def test_inventory_items_not_displayed(self):
+        InventoryItem.objects.all().delete()
+        response = self.client.get('/main/')
+        for item in InventoryItem.objects.all():
+            self.assertNotContains(response, item.name)
+    
+    def test_inventory_items_creation(self):
+        item = InventoryItem.objects.create(
+            name='War Cry',
+            amount=3,
+            description='The new charging heavy attack is different between swords and polearms. The charge before the weapon attack will also stagger enemies, but does not deal any damage.',
+            price=7500,
+            power=100,
+            category='Ashes of War',
+        )
+
+        self.assertEqual(item.name, 'War Cry')
+        self.assertEqual(item.amount, 3)
+        self.assertEqual(item.description, 'The new charging heavy attack is different between swords and polearms. The charge before the weapon attack will also stagger enemies, but does not deal any damage.')
+        self.assertEqual(item.price, 7500)
+        self.assertEqual(item.power, 100)
+        self.assertEqual(item.category, 'Ashes of War')
+```
+Jalankan tes dengan menggunakan perintah berikut.
+```
+python manage.py test
+```
+Berikut ini adalah hasil test yang telah dilakukan.
+```
+Found 6 test(s).
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.023s
+
+OK
+Destroying test database for alias 'default'...
+```
 
 ## **Bagan Client Request and Response - Django**
 ![alt-text](image/bagan.png)
