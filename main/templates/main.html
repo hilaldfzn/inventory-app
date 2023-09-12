@@ -82,20 +82,20 @@
         <tr class="judul-tabel">
           <th>Name</th>
           <th>Amount</th>
-          <th>Description</th>
           <th>Price</th>
           <th>Power</th>
           <th>Category</th>
+          <th>Description</th>
         </tr>
 
         {% for item in list_items %}
           <tr>
               <th>{{ item.name }}</th>
               <th>{{ item.amount }}</th>
-              <th>{{ item.description }}</th>
               <th>{{ item.price }} BP</th>
               <th>{{ item.power }}</th>
               <th>{{ item.category }}</th>
+              <th>{{ item.description }}</th>
           </tr>
         {% endfor %}
       </table>
