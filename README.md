@@ -9,7 +9,7 @@
 Link deployment untuk menuju aplikasi Inventory App dapat diakses melalui [Inventory App](https://inventory-app.adaptable.app/main/).
 
 ## **Membuat proyek Django baru**
-1. Buat direktori baru dengan nama yang Anda pilih, contohnya `django_project` kemudian buka *command prompt* (Windows) atau *terminal shell* (Linux/Mac) di dalam direktori tersebut.
+1. Buat direktori baru dengan nama yang Anda pilih, contohnya `project_django` kemudian buka *command prompt* (Windows) atau *terminal shell* (Linux/Mac) di dalam direktori tersebut.
 2. Buat *virtual environment* Python untuk mengisolasi proyek Python kita dengan menggunakan perintah `python -m venv env`.
 3. Mengaktifkan *virtual environment* dengan perintah `env\Scripts\activate.bat` (Windows) atau `source env/bin/activate` (Linux/Mac). *Virtual environment* akan aktif dan ditandai dengan `(env)` di baris input terminal.
 4. Buat file `requirements.txt` di dalam direktori proyek dan isi dengan daftar *dependencies* yang dibutuhkan untuk proyek Anda. Contoh beberapa *dependencies* yang akan digunakan sebagai berikut.
@@ -282,7 +282,7 @@ urlpatterns = [
 10. Centang bagian `HTTP Listener on PORT` dan klik `Deploy App` untuk memulai proses deployment aplikasi.
 
 ## **Bonus: Membuat Unit Test**
-Pada file `tests.py`, saya membuat testing tambahan selain yang diajarkan di tutorial.
+Pada file `tests.py`, saya membuat beberapa testing tambahan selain yang diajarkan di tutorial.
 ```python
 from django.test import TestCase, Client
 from main.models import InventoryItem
@@ -350,19 +350,7 @@ Destroying test database for alias 'default'...
 
 ## **Bagan Client Request and Response - Django**
 ![alt-text](image/bagan.png)
-Penjelasan bagan:
-1. Client membuka browser untuk mengakses website.
-2. Client memasuki website dan web server melayani request dari client.
-3. WSGI memproses server HTTP untuk website berbasis Python.
-4. Middleware berfungsi sebagai penghubung untuk mengintegrasikan teknologi yang digunakan dalam proyek untuk memproses request.
-5. URL Router mengarahkan alamat proyek sesuai request dari client (urls.py), kemudian mengarahkannya ke fungsi yang ada di views.py.
-6. Views (views.py) bertanggung jawab untuk merangkai konten yang akan ditampilkan dalam template HTML. Data yang diproses diambil dari basis data yang telah diorganisir menggunakan ORM dalam models.py.
-7. Context processor mengirimkan data dari views.py ke template HTML.
-8. Template HTML menampilkan tampilan depan proyek berdasarkan data konteks yang dikirimkan dari views.py dan mengikuti logika template tags.
-9. Middleware berfungsi sebagai penghubung untuk mengintegrasikan teknologi yang digunakan dalam proyek untuk memproses response.
-10. WSGI memproses server HTTP untuk website berbasis Python.
-11. Web server melayani response dari server untuk dikirimkan ke client.
-12. Client menerima response dari web server.
+Proses dimulai ketika seorang client membuka browser dan mengakses situs web yang diinginkannya. Pada tahap ini, web server siap melayani request dari client. Di dalam lingkungan server berbasis Python, Web Server Gateway Interface (WSGI) berperan penting dalam memproses HTTP request dari client. Selanjutnya, ada middleware yang berfungsi sebagai perantara integrasi teknologi yang digunakan dalam proyek web. Middleware ini bertugas memproses request dari client sebelum mengarahkannya ke URL Router. URL Router, yang biasanya diatur dalam file `urls.py`, mengarahkan alamat proyek sesuai dengan request client ke fungsi-fungsi yang terletak di `views.py`. Di dalam `views.py`, logika bisnis dan tampilan dari proyek website disusun. Data yang diperlukan untuk tampilan ini diambil dari database yang telah terstruktur menggunakan Object-Relational Mapping (ORM) dalam `models.py`. Selanjutnya, Context Processor berperan dalam mengirimkan data dari `views.py` ke template HTML. Template ini akan memanfaatkan data tersebut untuk menampilkan tampilan depan dari proyek sesuai dengan alur logika dari template tags. Setelah semua komponen tampilan disusun, middleware kembali berperan dalam memproses respons sebelum dikirimkan kembali ke client. WSGI kembali berperan dalam memproses HTTP respons dari server berbasis Python. Akhirnya, web server bertugas melayani respons dari server dan mengirimkannya kepada client, sehingga client dapat melihat hasil dari website yang diaksesnya.
 
 ## **Mengapa kita perlu menggunakan *virtual environment*?**
 *Virtual environment* diperlukan agar sistem dapat berjalan di lingkungan terisolasi. Di mana setiap proyek memiliki kebutuhan/dependensi yang berbeda-beda antara proyek satu dengan proyek yang lainnya. Dengan menggunakan *virtual environment*, maka proyek dapat berjalan sesuai dependensinya tanpa melakukan konfigurasi pada sistem operasi yang digunakan. File `requirements.txt` digunakan sebagai pencatatan daftar dependensi dari suatu proyek yang dijalankan dalam *virtual environment* tertentu. Hanya dengan mengetahui daftar dependensi yang ada melalui `requirements.txt` sebuah mesin host contohnya `Adaptable`, dapat mengetahui apa saja dependensi yang harus digunakan untuk menjalankan server. Hal ini juga memudahkan dalam proses penyimpanan di mana user tidak perlu melakukan push pada *virtual environment* karena sudah dicatat dengan baik di `requirements.txt` (*virtual environment* adalah direktori yang cukup memakan penyimpanan repository/host sehingga menghilangkannya dengan `.gitignore`).
