@@ -1,4 +1,5 @@
 from django.test import TestCase, Client
+from main.models import InventoryItem
 
 class mainTest(TestCase):
     def test_main_url_is_exist(self):
@@ -14,11 +15,32 @@ class mainTest(TestCase):
         content_type = response.get('Content-Type', '')
         self.assertIn('utf-8', content_type.lower())
     
-    def test_item_detail(self):
-        response = Client().get('/main/')
-        self.assertContains(response, 'Katana')
-        self.assertContains(response, 10)
-        self.assertContains(response, 'Katana is a sword with a curved blade longer than 60 cm fitted with an uchigatana-style mounting and worn in a waist sash with the cutting edge facing up.')
-        self.assertContains(response, 'Rp. 5000000,-')
-        self.assertContains(response, '75')
-        self.assertContains(response, 'Melee')
+    def test_inventory_items_displayed(self):
+        response = self.client.get('/main/')
+        for item in InventoryItem.objects.all():
+            self.assertContains(response, item.name)
+            self.assertContains(response, f'{item.price} BP')
+            self.assertContains(response, item.category)
+
+    def test_inventory_items_not_displayed(self):
+        InventoryItem.objects.all().delete()
+        response = self.client.get('/main/')
+        for item in InventoryItem.objects.all():
+            self.assertNotContains(response, item.name)
+    
+    def test_inventory_items_creation(self):
+        item = InventoryItem.objects.create(
+            name='War Cry',
+            amount=3,
+            description='The new charging heavy attack is different between swords and polearms. The charge before the weapon attack will also stagger enemies, but does not deal any damage.',
+            price=7500,
+            power=100,
+            category='Ashes of War',
+        )
+
+        self.assertEqual(item.name, 'War Cry')
+        self.assertEqual(item.amount, 3)
+        self.assertEqual(item.description, 'The new charging heavy attack is different between swords and polearms. The charge before the weapon attack will also stagger enemies, but does not deal any damage.')
+        self.assertEqual(item.price, 7500)
+        self.assertEqual(item.power, 100)
+        self.assertEqual(item.category, 'Ashes of War')
