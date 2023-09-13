@@ -2,6 +2,9 @@ from django.shortcuts import render
 
 def show_inventory(request):
     context = {
+        'creator' : 'Muhammad Hilal Darul Fauzan',
+        'id' : 2206830542,
+        'class' : 'PBP C',
         'list_items': [
             {
                 'name': 'Katana',

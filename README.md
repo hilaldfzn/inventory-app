@@ -216,12 +216,20 @@ from django.shortcuts import render
 
 def show_inventory(request):
     context = {
-        'name': 'Katana',
-        'amount': 10,
-        'description': 'Katana is a sword with a curved blade longer than 60 cm fitted with an uchigatana-style mounting and worn in a waist sash with the cutting edge facing up.',
-        'price': 5000000,
-        'power': 75,
-        'category':'Melee'
+        'creator' : 'Muhammad Hilal Darul Fauzan',
+        'id' : 2206830542,
+        'class' : 'PBP C',
+        'list_items': [
+            {
+                'name': 'Katana',
+                'amount': 20,
+                'description': 'Katana is a sword with a curved blade longer than 60 cm fitted with an uchigatana-style mounting and worn in a waist sash with the cutting edge facing up.',
+                'price': 500,
+                'power': 83,
+                'category':'Melee Weapons'
+            },
+            ...
+        ]   
     }
 
     return render(request, 'main.html', context)
