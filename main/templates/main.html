@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -88,6 +92,7 @@
           <th>Category</th>
           <th>Description</th>
         </tr>
+        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
 
         {% for item in list_items %}
           <tr>
@@ -101,5 +106,15 @@
         {% endfor %}
       </table>
     </div>
+    
+    <br />
+
+    <a href="{% url 'main:create_product' %}">
+        <button>
+            Add New Product
+        </button>
+    </a>
   </body>
 </html>
+
+{% endblock content %}

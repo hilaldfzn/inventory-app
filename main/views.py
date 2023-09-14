@@ -1,52 +1,44 @@
+from django.http import HttpResponse
+from django.core import serializers
+from django.http import HttpResponseRedirect
+from main.forms import ProductForm
+from main.models import InventoryItem
+from django.urls import reverse
 from django.shortcuts import render
 
-def show_inventory(request):
+def show_main(request):
+    items = InventoryItem.objects.all()
     context = {
         'creator' : 'Muhammad Hilal Darul Fauzan',
         'id' : 2206830542,
         'class' : 'PBP C',
-        'list_items': [
-            {
-                'name': 'Katana',
-                'amount': 20,
-                'description': 'Katana is a sword with a curved blade longer than 60 cm fitted with an uchigatana-style mounting and worn in a waist sash with the cutting edge facing up.',
-                'price': 500,
-                'power': 83,
-                'category':'Melee Weapons'
-            },
-            {
-                'name': 'Misbegotten Shortbow',
-                'amount': 10,
-                'description': 'Shortbow wielded by Winged Misbegotten. Fine fur clings to it. Designed to inflict additional damage by sacrificing range.',
-                'price': 450,
-                'power': 75,
-                'category':'Ranged Weapons'
-            },
-            {
-                'name': 'Cragblade',
-                'amount': 43,
-                'description': 'Dropped by a Teardrop Scarab in Caelid, west of the bridge leading towards Redmane Castle, behind the siege tower on a hill, right next to the monument.',
-                'price': 300,
-                'power': 63,
-                'category':'Ashes of War'
-            },
-            {
-                'name': 'Damascus Sword',
-                'amount': 5,
-                'description': 'Damascus steel swords were legendary for their great strength, durability and their “almost eternal” edge. They could cut silk as well as shatter a rock.',
-                'price': 3000,
-                'power': 100,
-                'category':'Melee Weapons'
-            },
-            {
-                'name': 'Shattershard Arrow',
-                'amount': 107,
-                'description': 'Arrow whittled from animal bones tipped with a shard of crystal. Creates a resonating noise at the point of impact.',
-                'price': 150,
-                'power': 40,
-                'category':'Arrows'
-            },
-        ],
+        'list_items' : items,
     }
 
     return render(request, 'main.html', context)
+
+def create_product(request):
+    form = ProductForm(request.POST or None)
+
+    if form.is_valid() and request.method == "POST":
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "create_product.html", context)
+
+def show_xml(request):
+    data = InventoryItem.objects.all()
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json(request):
+    data = InventoryItem.objects.all()
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+
+def show_xml_by_id(request, id):
+    data = InventoryItem.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+
+def show_json_by_id(request, id):
+    data = InventoryItem.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
