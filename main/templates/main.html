@@ -12,9 +12,9 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
+      <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
       <style>
-        * {
+         * {
           font-family: 'Poppins', sans-serif;
           cursor: pointer;
         }
@@ -25,27 +25,33 @@
           text-align: center;
         }
 
-        h2, .profil, th, td {
-          color: #333;
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
         }
 
-        h1 {
-          font-size: 36px;
-          color: #25316D;
-          margin-bottom: 10px;
+        .hero-name {
+          font-size: 3rem;
+          font-weight: 700;
+          color: #7e74f1;
+          margin: 0rem 1rem 1rem 0.5rem;
+          text-align: left;
         }
 
-        h2 {
-          font-size: 20px;
+        .hero-name span {
+          color: black;
         }
 
-        .profil {
-          font-size: 16px;
+        .nav__logo-img {
+          width: 2rem;
+          font-size: 3rem;
         }
 
         .container-tabel {
-          display:flex; 
-          justify-content:center;
+          display: flex; 
+          justify-content: center;
+          margin-top: 40px;
         }
         
         .judul-tabel th {
@@ -70,17 +76,54 @@
         tr:nth-child(odd) {
           background-color: white;
         }
+
+        .add-to-cart {
+          background-color: #5F6F94;
+          color: white;
+          font-weight: bold;
+          border: 2px solid #25316D;
+          border-radius: 10px;
+          cursor: pointer;
+          margin-top: 20px;
+          padding: 10px 10px;
+        }
+
+        .footer {
+          background-color: #25316D;
+          color: #fff;
+          text-align: center;
+          font-weight: 600;
+          padding: 2rem 0;
+          margin-top: 40px;
+        }
+
+        .footer__title {
+          font-size: 2rem;
+          margin-bottom: 2rem;
+        }
+
+        .footer__social {
+          margin-bottom: 2rem;
+        }
+
+        .footer__icon {
+          font-size: 1.5rem;
+          color: #fff;
+          margin: 0 1rem;
+        }
+
+        .footer__copy {
+          font-size: .75rem;
+        }
       </style>
   </head>
-  <body>
-    <h1>Inventory App</h1>
-    <h2>Tugas 2 - Pemrograman Berbasis Platform</h3>
-
-    <div class="profil">
-      <p>{{ creator }}</p>
-      <p>{{ id }}</p>
-      <p>{{ class }}</p>
-    </div>
+  <body>  
+    <div class="header">
+      <h1 class="hero-name">
+        <img src="../../image/logo.png" alt="" class="nav__logo-img">
+        Inventory <span>App</span>
+      </h1>
+    </div>  
 
     <div class="container-tabel">
       <table>
@@ -102,7 +145,6 @@
               <th>{{ item.power }}</th>
               <th>{{ item.category }}</th>
               <th>{{ item.description }}</th>
-          </tr>
         {% endfor %}
       </table>
     </div>
@@ -110,10 +152,20 @@
     <br />
 
     <a href="{% url 'main:create_product' %}">
-        <button>
-            Add New Product
-        </button>
+      <button class="add-to-cart">
+          Add New Product
+      </button>
     </a>
+
+    <footer class="footer">
+      <p class="footer__title">{{ creator }}</p>
+      <div class="footer__social">
+          <a href="#" class="footer__icon"><i class='bx bxl-linkedin' ></i></a>
+          <a href="#" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+          <a href="#" class="footer__icon"><i class='bx bxl-whatsapp' ></i></a>
+      </div>
+      <p class="footer__copy">&#169; Created by {{ creator }} - {{ class }} - {{ id }}</p>
+    </footer>
   </body>
 </html>
 

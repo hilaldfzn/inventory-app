@@ -1,7 +1,5 @@
 # **Inventory App**
 
-**Tugas 2 - Pemrograman Berbasis Platform**
-
 **Muhammad Hilal Darul Fauzan**<br/>
 **2206830542**<br/>
 **PBP C**<br/>
