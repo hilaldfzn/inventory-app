@@ -11,176 +11,176 @@ Link deployment untuk menuju aplikasi Inventory App dapat diakses melalui [Inven
 2. Buat *virtual environment* Python untuk mengisolasi proyek Python kita dengan menggunakan perintah `python -m venv env`.
 3. Mengaktifkan *virtual environment* dengan perintah `env\Scripts\activate.bat` (Windows) atau `source env/bin/activate` (Linux/Mac). *Virtual environment* akan aktif dan ditandai dengan `(env)` di baris input terminal.
 4. Buat file `requirements.txt` di dalam direktori proyek dan isi dengan daftar *dependencies* yang dibutuhkan untuk proyek Anda. Contoh beberapa *dependencies* yang akan digunakan sebagai berikut.
-```txt
-django
-gunicorn
-whitenoise
-psycopg2-binary
-requests
-urllib3
-```
+    ```txt
+    django
+    gunicorn
+    whitenoise
+    psycopg2-binary
+    requests
+    urllib3
+    ```
 5. Install semua *dependencies* pada `requirements.txt` dengan perintah `python -m pip install -r requirements.txt`.
 6. Buat proyek Django dengan nama `inventory_app` menggunakan perintah `django-admin startproject inventory_app .`.
 7. Menambahkan `*` pada `ALLOWED_HOSTS` di dalam `settings.py` yang berada di dalam direktori `inventory_app` untuk mengizinkan akses dari semua host.
-```python
-...
-ALLOWED_HOSTS = ["*"]
-...
-```
+    ```python
+    ...
+    ALLOWED_HOSTS = ["*"]
+    ...
+    ```
 8. Kembali ke *command prompt* atau *terminal shell* dan jalankan server dengan perintah `python manage.py runserver` di dalam direktori proyek (pastikan ada file `manage.py` di sana). Lalu akses http://localhost:8000 di peramban web untuk melihat animasi roket yang menandakan bahwa aplikasi Django Anda telah berhasil dibuat.
 9. Untuk menghentikan server, cukup dengan menekan tombol `Ctrl+C` di *command prompt* atau *terminal shell*. Pastikan juga untuk menonaktifkan *virtual environment* dengan menggunakan perintah `deactivate`.
 10. Buat file `.gitignore` untuk menentukan berkas-berkas dan direktori-direktori yang harus diabaikan oleh Git. Isilah file tersebut dengan teks berikut.
-```.gitignore
-# Django
-*.log
-*.pot
-*.pyc
-__pycache__
-db.sqlite3
-media
+    ```.gitignore
+    # Django
+    *.log
+    *.pot
+    *.pyc
+    __pycache__
+    db.sqlite3
+    media
 
-# Backup files
-*.bak 
+    # Backup files
+    *.bak 
 
-# If you are using PyCharm
-# User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+    # If you are using PyCharm
+    # User-specific stuff
+    .idea/**/workspace.xml
+    .idea/**/tasks.xml
+    .idea/**/usage.statistics.xml
+    .idea/**/dictionaries
+    .idea/**/shelf
 
-# AWS User-specific
-.idea/**/aws.xml
+    # AWS User-specific
+    .idea/**/aws.xml
 
-# Generated files
-.idea/**/contentModel.xml
+    # Generated files
+    .idea/**/contentModel.xml
 
-# Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
+    # Sensitive or high-churn files
+    .idea/**/dataSources/
+    .idea/**/dataSources.ids
+    .idea/**/dataSources.local.xml
+    .idea/**/sqlDataSources.xml
+    .idea/**/dynamic.xml
+    .idea/**/uiDesigner.xml
+    .idea/**/dbnavigator.xml
 
-# Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
+    # Gradle
+    .idea/**/gradle.xml
+    .idea/**/libraries
 
-# File-based project format
-*.iws
+    # File-based project format
+    *.iws
 
-# IntelliJ
-out/
+    # IntelliJ
+    out/
 
-# JIRA plugin
-atlassian-ide-plugin.xml
+    # JIRA plugin
+    atlassian-ide-plugin.xml
 
-# Python
-*.py[cod] 
-*$py.class 
+    # Python
+    *.py[cod] 
+    *$py.class 
 
-# Distribution / packaging 
-.Python build/ 
-develop-eggs/ 
-dist/ 
-downloads/ 
-eggs/ 
-.eggs/ 
-lib/ 
-lib64/ 
-parts/ 
-sdist/ 
-var/ 
-wheels/ 
-*.egg-info/ 
-.installed.cfg 
-*.egg 
-*.manifest 
-*.spec 
+    # Distribution / packaging 
+    .Python build/ 
+    develop-eggs/ 
+    dist/ 
+    downloads/ 
+    eggs/ 
+    .eggs/ 
+    lib/ 
+    lib64/ 
+    parts/ 
+    sdist/ 
+    var/ 
+    wheels/ 
+    *.egg-info/ 
+    .installed.cfg 
+    *.egg 
+    *.manifest 
+    *.spec 
 
-# Installer logs 
-pip-log.txt 
-pip-delete-this-directory.txt 
+    # Installer logs 
+    pip-log.txt 
+    pip-delete-this-directory.txt 
 
-# Unit test / coverage reports 
-htmlcov/ 
-.tox/ 
-.coverage 
-.coverage.* 
-.cache 
-.pytest_cache/ 
-nosetests.xml 
-coverage.xml 
-*.cover 
-.hypothesis/ 
+    # Unit test / coverage reports 
+    htmlcov/ 
+    .tox/ 
+    .coverage 
+    .coverage.* 
+    .cache 
+    .pytest_cache/ 
+    nosetests.xml 
+    coverage.xml 
+    *.cover 
+    .hypothesis/ 
 
-# Jupyter Notebook 
-.ipynb_checkpoints 
+    # Jupyter Notebook 
+    .ipynb_checkpoints 
 
-# pyenv 
-.python-version 
+    # pyenv 
+    .python-version 
 
-# celery 
-celerybeat-schedule.* 
+    # celery 
+    celerybeat-schedule.* 
 
-# SageMath parsed files 
-*.sage.py 
+    # SageMath parsed files 
+    *.sage.py 
 
-# Environments 
-.env 
-.venv 
-env/ 
-venv/ 
-ENV/ 
-env.bak/ 
-venv.bak/ 
+    # Environments 
+    .env 
+    .venv 
+    env/ 
+    venv/ 
+    ENV/ 
+    env.bak/ 
+    venv.bak/ 
 
-# mkdocs documentation 
-/site 
+    # mkdocs documentation 
+    /site 
 
-# mypy 
-.mypy_cache/ 
+    # mypy 
+    .mypy_cache/ 
 
-# Sublime Text
-*.tmlanguage.cache 
-*.tmPreferences.cache 
-*.stTheme.cache 
-*.sublime-workspace 
-*.sublime-project 
+    # Sublime Text
+    *.tmlanguage.cache 
+    *.tmPreferences.cache 
+    *.stTheme.cache 
+    *.sublime-workspace 
+    *.sublime-project 
 
-# sftp configuration file 
-sftp-config.json 
+    # sftp configuration file 
+    sftp-config.json 
 
-# Package control specific files Package 
-Control.last-run 
-Control.ca-list 
-Control.ca-bundle 
-Control.system-ca-bundle 
-GitHub.sublime-settings 
+    # Package control specific files Package 
+    Control.last-run 
+    Control.ca-list 
+    Control.ca-bundle 
+    Control.system-ca-bundle 
+    GitHub.sublime-settings 
 
-# Visual Studio Code
-.vscode/* 
-!.vscode/settings.json 
-!.vscode/tasks.json 
-!.vscode/launch.json 
-!.vscode/extensions.json
-.history
-```
+    # Visual Studio Code
+    .vscode/* 
+    !.vscode/settings.json 
+    !.vscode/tasks.json 
+    !.vscode/launch.json 
+    !.vscode/extensions.json
+    .history
+    ```
 
 ## **Membuat aplikasi dengan nama `main` pada proyek**
 1. Buka *command prompt* pada direktori utama dan aktifkan *virtual environment* dengan perintah `env\Scripts\activate.bat`.
 2. Buat aplikasi `main` dengan perintah `python manage.py startapp main`
 3. Mendaftarkan aplikasi `main` ke proyek dengan menambahkan `'main'` pada `INSTALLED_APPS` di dalam file `settings.py`.
-```python
-INSTALLED_APPS = [
-    ...,
-    'main',
-    ...
-]
-```
+    ```python
+    INSTALLED_APPS = [
+        ...,
+        'main',
+        ...
+    ]
+    ```
  
 ## **Membuat model pada aplikasi `main`**
 1. Pada langkah ini, ubah file `models.py` yang terdapat di dalam direktori aplikasi `main` untuk mendefinisikan model baru dengan nama `InventoryItem` dan memiliki atribut wajib sebagai berikut.
@@ -189,17 +189,17 @@ INSTALLED_APPS = [
 * `description` sebagai deskripsi item dengan tipe `TextField`.<br/>
 Dipersilakan untuk menambahkan atribut lainnya jika diinginkan, seperti `price`, `power`, `category`. Namun, model aplikasi Anda wajib memiliki ketiga atribut wajib di atas (`name`, `amount`, `description`).
 2. Isi file `models.py` dengan kode berikut.
-```python
-from django.db import models
+    ```python
+    from django.db import models
 
-class InventoryItem(models.Model):
-    name = models.CharField(max_length=255)
-    amount = models.IntegerField()
-    description = models.TextField()
-    price = models.BigIntegerField()
-    power = models.IntegerField()
-    category = models.CharField(max_length=255)
-```
+    class InventoryItem(models.Model):
+        name = models.CharField(max_length=255)
+        amount = models.IntegerField()
+        description = models.TextField()
+        price = models.BigIntegerField()
+        power = models.IntegerField()
+        category = models.CharField(max_length=255)
+    ```
 3. Jalankan perintah `python manage.py makemigrations` untuk membuat migrasi model lalu jalankan perintah `python manage.py migrate` untuk menerapkan migrasi ke dalam basis data lokal.
 
 > [!IMPORTANT]
@@ -209,29 +209,29 @@ class InventoryItem(models.Model):
 1. Buat direktori baru bernama `templates` di dalam direktori aplikasi `main` buat file `main.html` di dalamnya.
 2. Buka file `views.py` pada direktori `main` dan tambahkan baris kode di paling atas `from django.shortcuts import render`. Ini akan mengimpor fungsi render dari modul django.shortcuts, yang akan digunakan untuk melakukan proses rendering tampilan HTML dengan menggunakan data yang diberikan.
 3. Buat fungsi `show_inventory` dengan parameter `request`. Di dalam fungsi ini, buatlah sebuah dictionary `context` yang berisi data yang akan dikirimkan ke tampilan. Setelah itu, gunakan fungsi `render` dengan tiga argumen, yaitu `request` (objek permintaan HTTP yang dikirim oleh pengguna), nama file HTML yang akan digunakan untuk me-render tampilan, dan `context` (dictionary yang berisi data untuk digunakan dalam tampilan yang dinamis). Setelah itu, kembalikan hasil rendering tersebut.
-```python
-from django.shortcuts import render
+    ```python
+    from django.shortcuts import render
 
-def show_inventory(request):
-    context = {
-        'creator' : 'Muhammad Hilal Darul Fauzan',
-        'id' : 2206830542,
-        'class' : 'PBP C',
-        'list_items': [
-            {
-                'name': 'Katana',
-                'amount': 20,
-                'description': 'Katana is a sword with a curved blade longer than 60 cm fitted with an uchigatana-style mounting and worn in a waist sash with the cutting edge facing up.',
-                'price': 500,
-                'power': 83,
-                'category':'Melee Weapons'
-            },
-            ...
-        ]   
-    }
+    def show_inventory(request):
+        context = {
+            'creator' : 'Muhammad Hilal Darul Fauzan',
+            'id' : 2206830542,
+            'class' : 'PBP C',
+            'list_items': [
+                {
+                    'name': 'Katana',
+                    'amount': 20,
+                    'description': 'Katana is a sword with a curved blade longer than 60 cm fitted with an uchigatana-style mounting and worn in a waist sash with the cutting edge facing up.',
+                    'price': 500,
+                    'power': 83,
+                    'category':'Melee Weapons'
+                },
+                ...
+            ]   
+        }
 
-    return render(request, 'main.html', context)
-```
+        return render(request, 'main.html', context)
+    ```
 4. Buka file `main.html` yang telah dibuat sebelumnya dan lakukan perubahan pada kode yang tadinya statis menjadi kode Django yang sesuai untuk menampilkan data. Gunakan sintaks Django `{{ }}` untuk memasukkan data dari `context` yang telah dikirimkan oleh fungsi `show_inventory`.
 
 ## **Membuat sebuah routing pada `urls.py` aplikasi main untuk memetakan fungsi yang telah dibuat pada `views.py`**
@@ -392,3 +392,269 @@ MVC (Model-View-Controller), MVT (Model-View-Template), dan MVVM (Model-View-Vie
 
 * #### **MVVM**
     MVVM sering digunakan dalam pengembangan aplikasi berbasis antarmuka pengguna (UI), seperti aplikasi mobile atau desktop. Ini fokus pada pemisahan tugas tampilan dan logika dalam UI, dengan ViewModel bertindak sebagai penghubung antara Model dan View, mengurangi ketergantungan antara keduanya. MVVM menggunakan sistem pengikatan data (data binding) untuk otomatis memperbarui tampilan ketika data berubah di ViewModel. Meskipun ini mengurangi kode boilerplate untuk pembaruan tampilan, penggunaan data binding yang kompleks dapat membuat debugging aplikasi menjadi sedikit lebih rumit.
+
+## **Membuat input `form` untuk menambahkan objek model pada app sebelumnya**
+
+1. Mengatur routing dari `/main` ke `/` agar dapat langsung mengakses halaman utama tanpa menerima pesan `404 error` jika tidak menambahkan `/main/` secara manual pada URL.
+    * Buka `urls.py` yang ada pada folder `inventory_app` dan modifikasi *path* `main/` menjadi `''` pada `urlpatterns` seperti berikut.
+        ```python
+        urlpatterns = [
+            path('', include('main.urls')),
+            path('admin/', admin.site.urls),
+        ]
+        ```
+
+2. Membuat kerangka `views` dengan mengimplementasikan `skeleton`. Langkah ini berguna untuk menjaga konsistensi dalam desain situs web dan memperkecil kemungkinan terjadinya redudansi kode.
+    * Buat folder `templates` pada *root folder* dan buat sebuah file HTML baru dengan nama `base.html`. File HTML ini berperan sebagai *template dasar* yang dapat digunakan secara umum untuk halaman web lain yang ada dalam proyek. Isi file `base.html` dengan kode di bawah ini:
+        ```html
+        {% load static %}
+        <!DOCTYPE html>
+        <html lang="en">
+            <head>
+                <meta charset="UTF-8" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
+                {% block meta %}
+                {% endblock meta %}
+            </head>
+
+            <body>
+                {% block content %}
+                {% endblock content %}
+            </body>
+        </html>
+        ```
+    * Buka file `settings.py` yang ada di subdirektori `inventory_app` dan modifikasi dengan menambahkan kode di bagian dictionary dengan key `DIRS` pada variabel list `TEMPLATES` seperti berikut:
+        ```python
+        ...
+        TEMPLATES = [
+            {
+                'BACKEND': 'django.template.backends.django.DjangoTemplates',
+                'DIRS': [BASE_DIR / 'templates'],
+                'APP_DIRS': True,
+                'OPTIONS': {
+                    'context_processors': [
+                        'django.template.context_processors.debug',
+                        'django.template.context_processors.request',
+                        'django.contrib.auth.context_processors.auth',
+                        'django.contrib.messages.context_processors.messages',
+                    ],
+                },
+            },
+        ]
+        ...
+        ```
+    * Pada `main/templates/main.html`, tambahkan kode berikut untuk meng-extend dari `base.html` yang baru saja dibuat.
+        ```html
+        {% extends 'base.html' %}
+        {% block content %}
+            ...
+            <!-- kode html yang telah dibuat sebelumnya -->
+            ...
+        {% endblock content %}
+        ```
+
+3. Membuat form input data dan menampilkan data item pada HTML
+    * Buat file baru bernama `forms.py` pada direktori `main` agar dapat menerima data item baru. Isilah `forms.py` dengan kode berikut:
+        ```python
+        from django.forms import ModelForm
+        from main.models import InventoryItem
+
+        class ProductForm(ModelForm):
+            class Meta:
+                model = InventoryItem
+                fields = ["name", "amount", "price", "power", "category", "description"]
+        ```
+    * Modifikasi file `views.py` pada direktori `main` dengan menambahkan beberapa import dan fungsi baru `create_product` dengan parameter `request` untuk menghasilkan formulir yang dapat menambahkan data produk secara otomatis ketika data disubmit dari form. Berikut adalah potongan kode dari file `views.py`:
+        ```python
+        ...
+        from django.http import HttpResponseRedirect
+        from main.forms import ProductForm
+        from main.models import InventoryItem
+        from django.urls import reverse
+        ...
+
+        def create_product(request):
+            form = ProductForm(request.POST or None)
+
+            if form.is_valid() and request.method == "POST":
+                form.save()
+                return HttpResponseRedirect(reverse('main:show_inventory'))
+
+            context = {'form': form}
+            return render(request, "create_product.html", context)
+        ```
+    * Ubahlah isi dari fungsi `show_inventory` pada file `views.py` seperti berikut:
+        ```python
+        def show_inventory(request):
+            items = InventoryItem.objects.all()
+            
+            context = {
+                'creator' : 'Muhammad Hilal Darul Fauzan',
+                'id' : '2206830542',
+                'class' : 'PBP C',
+                'list_items' : items,
+            }
+
+            return render(request, 'main.html', context)
+        ```
+    * Buka `urls.py` pada direktori `main` dengan menambahkan import fungsi `create_product`.
+        ```python
+        from main.views import show_inventory, create_product
+        ```
+    * Tambahkan path URL data form ke dalam `urlpatterns` pada `urls.py` di direktori `main`.
+        ```python
+        path('create-product', create_product, name='create_product'),
+        ```
+    * Buat file HTML dengan nama `create_product.html` pada `main/templates`. Isi file tersebut dengan kode berikut:
+        ```html
+        {% extends 'base.html' %} 
+
+        {% block content %}
+        <h1>Add New Product</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table }}
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" value="Add Product"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        {% endblock %}
+        ```
+    * Modifikasi `main.html` pada direktori `main/templates` dengan menambahkan kode berikut di dalam `{% block content %}` untuk menampilkan data item yang sudah diinput dan sebuah tombol untuk *redirect* ke halaman *form*.
+        ```html
+        ...
+        <div class="container-tabel">
+            <table>
+            <tr class="judul-tabel">
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th>Power</th>
+                <th>Category</th>
+                <th>Description</th>
+            </tr>
+            {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+            {% for item in list_items %}
+                <tr>
+                    <th>{{ item.name }}</th>
+                    <th>{{ item.amount }}</th>
+                    <th>{{ item.price }} BP</th>
+                    <th>{{ item.power }}</th>
+                    <th>{{ item.category }}</th>
+                    <th>{{ item.description }}</th>
+            {% endfor %}
+            </table>
+        </div>
+
+        <br />
+
+        <a href="{% url 'main:create_product' %}">
+            <button class="add-to-cart">
+                Add New Product
+            </button>
+        </a>
+        ...
+        {% endblock content %}
+        ``` 
+
+## **Tambahkan 5 fungsi `views` untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID**
+
+1. Ubah fungsi `show_inventory` dalam file `views.py` pada direktori `main` untuk dapat menghasilkan *render* HTML yang mencakup informasi tentang pembuat web dan data item yang telah dimasukkan.
+    ```python
+    def show_inventory(request):
+        items = InventoryItem.objects.all()
+
+        context = {
+            'creator' : 'Muhammad Hilal Darul Fauzan',
+            'id' : '2206830542',
+            'class' : 'PBP C',
+            'list_items' : items,
+        }
+
+        return render(request, 'main.html', context)
+    ```
+
+2. Buka `views.py` pada direktori `main` dan tambahkan *import* `HttpResponse` dan `Serializer` di bagian paling atas.
+    ```python
+    from django.http import HttpResponse
+    from django.core import serializers
+    ```
+
+3. Buat fungsi dengan parameter `request` untuk mengembalikan data-data dalam bentuk XML dengan menambahkan kode berikut pada `views.py`:
+    ```python
+    def show_xml(request):
+        data = InventoryItem.objects.all()
+        return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+    ```
+
+4. Buat fungsi dengan parameter `request` untuk mengembalikan data-data dalam bentuk JSON dengan menambahkan kode berikut pada `views.py`:
+    ```python
+    def show_json(request):
+        data = InventoryItem.objects.all()
+        return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+    ```
+
+5. Buat fungsi dengan parameter `request` dan `id` untuk mengembalikan data dari suatu ID tertentu dalam bentuk XML dengan menambahkan kode berikut pada `views.py`:
+    ```python
+    def show_xml_by_id(request, id):
+        data = InventoryItem.objects.filter(pk=id)
+        return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
+    ```
+
+6. Buat fungsi dengan parameter `request` dan `id` untuk mengembalikan data dari suatu ID tertentu dalam bentuk JSON dengan menambahkan kode berikut pada `views.py`:
+    ```python
+    def show_json_by_id(request, id):
+        data = InventoryItem.objects.filter(pk=id)
+        return HttpResponse(serializers.serialize("json", data), content_type="application/json")
+    ```
+
+## **Membuat routing URL untuk masing-masing `views` yang telah ditambahkan pada poin 2**
+
+Buka file `urls.py` pada direktori `main` dan *import* fungsi yang sudah dibuat pada poin 2, yaitu `show_xml`, `show_json`, `show_xml_by_id`, dan `show_json_by_id`. Kemudian perbarui *path url* yang di dalam `urlpatterns` untuk mengakses semua fungsi tersebut.
+```python
+from django.urls import path
+from main.views import show_inventory, create_product, show_xml, show_json, show_xml_by_id, show_json_by_id
+
+app_name = 'main'
+
+urlpatterns = [
+    path('', show_inventory, name='show_inventory'),
+    path('create-product', create_product, name='create_product'),
+    path('xml/', show_xml, name='show_xml'),
+    path('json/', show_json, name='show_json'),
+    path('xml/<int:id>/', show_xml_by_id, name='show_xml_by_id'),
+    path('json/<int:id>/', show_json_by_id, name='show_json_by_id'),
+]
+```
+## **Apa perbedaan antara form `POST` dan form `GET` dalam Django?**
+
+## **Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?**
+
+## **Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?**
+
+## **Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman**
+
+1. Pastikan server sudah berjalan dengan perintah `python manage.py runserver`.
+
+2. Buka Postman dan buat sebuah *request* baru dengan *method* `GET` dan  isi dengan beberapa *url* sebagai berikut untuk mengetes apakah data terkirimkan dengan baik.
+    * HTML (http://localhost:8000)
+    ![alt-text](image/Postman-html.jpg)
+    * XML (http://localhost:8000/xml)
+    ![alt-text](image/Postman-xml.jpg)
+    * JSON (http://localhost:8000/json)
+    ![alt-text](image/Postman-json.jpg)
+    * XML by ID (http://localhost:8000/xml/[id])
+    ![alt-text](image/Postman-xml-3.jpg)
+    * JSON by ID (http://localhost:8000/json/[id])
+    ![alt-text](image/Postman-json-3.jpg)
