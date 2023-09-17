@@ -6,11 +6,12 @@ from main.models import InventoryItem
 from django.urls import reverse
 from django.shortcuts import render
 
-def show_main(request):
+def show_inventory(request):
     items = InventoryItem.objects.all()
+
     context = {
         'creator' : 'Muhammad Hilal Darul Fauzan',
-        'id' : 2206830542,
+        'id' : '2206830542',
         'class' : 'PBP C',
         'list_items' : items,
     }
@@ -22,7 +23,7 @@ def create_product(request):
 
     if form.is_valid() and request.method == "POST":
         form.save()
-        return HttpResponseRedirect(reverse('main:show_main'))
+        return HttpResponseRedirect(reverse('main:show_inventory'))
 
     context = {'form': form}
     return render(request, "create_product.html", context)
