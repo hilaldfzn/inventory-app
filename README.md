@@ -6,6 +6,33 @@
 
 Link deployment untuk menuju aplikasi Inventory App dapat diakses melalui [Inventory App](https://inventory-app.adaptable.app/main/).
 
+# Table of Contents
+
+[**Tugas 2: Implementasi Model-View-Template (MVT) pada Django**](<#Tugas-2-Implementasi-Model-View-Template-(MVT)-pada-Django>)<br/>
+&emsp;[**Membuat proyek Django baru**](<##Membuat-proyek-Django-baru>)<br/>
+&emsp;[**Membuat aplikasi dengan nama `main` pada proyek**](<##Membuat-aplikasi-dengan-nama-main-pada-proyek>)<br/>
+&emsp;[**Membuat model pada aplikasi `main`**](<##Membuat-model-pada-aplikasi-main>)<br/>
+&emsp;[**Membuat sebuah fungsi pada `views.py` untuk dikembalikan ke dalam sebuah template HTML**](<##Membuat-sebuah-fungsi-pada-viewspy-untuk-dikembalikan-ke-dalam-sebuah-template-HTML>)<br/>
+&emsp;[**Membuat sebuah routing pada `urls.py` aplikasi main untuk memetakan fungsi yang telah dibuat pada `views.py`**](<##Membuat-sebuah-routing-pada-urlspy-aplikasi-main-untuk-memetakan-fungsi-yang-telah-dibuat-pada-viewspy>)<br/>
+&emsp;[**Melakukan routing pada proyek agar dapat menjalankan aplikasi `main`**](<##Melakukan-routing-pada-proyek-agar-dapat-menjalankan-aplikasi-main>)<br/>
+&emsp;[**Melakukan deployment ke Adaptable**](<##Melakukan-deployment-ke-Adaptable>)<br/>
+&emsp;[**Bonus: Membuat Unit Test**](<##Bonus-Membuat-Unit-Test>)<br/>
+&emsp;[**Bagan Client Request and Response - Django**](<##Bagan-Client-Request-and-Response-Django>)<br/>
+&emsp;[**Mengapa kita perlu menggunakan *virtual environment*?**](<##Mengapa-kita-perlu-menggunakan-virtual-environment?>)<br/>
+&emsp;[**Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan *virtual environment*?**](<##Apakah-kita-tetap-dapat-membuat-aplikasi-web-berbasis-Django-tanpa-menggunakan-virtual-environment?>)<br/>
+&emsp;[**Apa itu MVC, MVT, MVVM? Apa saja perbedaan dari ketiganya?**](<##Apa-itu-MVC-MVT-MVVM-?-Apa-saja-perbedaan-dari-ketiganya?>)<br/>
+
+[**Tugas 3: Implementasi Form dan Data Delivery pada Django**](<#Tugas-3-Implementasi=Form-dan-Data-Delivery-pada-Django>)<br/>
+&emsp;[**Membuat input `form` untuk menambahkan objek model pada app sebelumnya**](<##Membuat-input-form-untuk-menambahkan-objek-model-pada-app-sebelumnya>)<br/>
+&emsp;[**Tambahkan 5 fungsi `views` untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID**](<##Tambahkan-5-fungsi-views-untuk-melihat-objek-yang-sudah-ditambahkan-dalam-format-HTML-XML-JSON-XML-by-ID-dan-JSON-by-ID>)<br/>
+&emsp;[**Membuat routing URL untuk masing-masing `views` yang telah ditambahkan pada poin 2**](<##Membuat-routing-URL-untuk-masing-masing-views-yang-telah-ditambahkan-pada-poin-2>)<br/>
+&emsp;[**Apa perbedaan antara form `POST` dan form `GET` dalam Django?**](<##Apa-perbedaan-antara-form-POST-dan-form-GET-dalam-Django?>)<br/>
+&emsp;[**Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?**](<##Apa-perbedaan-utama-antara-XML-JSON-dan-HTML-dalam-konteks-pengiriman-data?>)<br/>
+&emsp;[**Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?**](<##Mengapa-JSON-sering-digunakan-dalam-pertukaran-data-antara-aplikasi-web-modern?>)<br/>
+&emsp;[**Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman**](<##Mengakses-kelima-URL-di-poin-2-menggunakan-Postman-membuat-screenshot-dari-hasil-akses-URL-pada-Postman>)<br/>
+
+
+# **Tugas 2: Implementasi Model-View-Template (MVT) pada Django**
 ## **Membuat proyek Django baru**
 1. Buat direktori baru dengan nama yang Anda pilih, contohnya `project_django` kemudian buka *command prompt* (Windows) atau *terminal shell* (Linux/Mac) di dalam direktori tersebut.
 2. Buat *virtual environment* Python untuk mengisolasi proyek Python kita dengan menggunakan perintah `python -m venv env`.
@@ -184,9 +211,9 @@ Link deployment untuk menuju aplikasi Inventory App dapat diakses melalui [Inven
  
 ## **Membuat model pada aplikasi `main`**
 1. Pada langkah ini, ubah file `models.py` yang terdapat di dalam direktori aplikasi `main` untuk mendefinisikan model baru dengan nama `InventoryItem` dan memiliki atribut wajib sebagai berikut.
-* `name` sebagai nama item dengan tipe `CharField`.
-* `amount` sebagai jumlah item dengan tipe `IntegerField`.
-* `description` sebagai deskripsi item dengan tipe `TextField`.<br/>
+    * `name` sebagai nama item dengan tipe `CharField`.
+    * `amount` sebagai jumlah item dengan tipe `IntegerField`.
+    * `description` sebagai deskripsi item dengan tipe `TextField`.<br/>
 Dipersilakan untuk menambahkan atribut lainnya jika diinginkan, seperti `price`, `power`, `category`. Namun, model aplikasi Anda wajib memiliki ketiga atribut wajib di atas (`name`, `amount`, `description`).
 2. Isi file `models.py` dengan kode berikut.
     ```python
@@ -392,10 +419,12 @@ MVC (Model-View-Controller), MVT (Model-View-Template), dan MVVM (Model-View-Vie
 
 * #### **MVVM**
     MVVM sering digunakan dalam pengembangan aplikasi berbasis antarmuka pengguna (UI), seperti aplikasi mobile atau desktop. Ini fokus pada pemisahan tugas tampilan dan logika dalam UI, dengan ViewModel bertindak sebagai penghubung antara Model dan View, mengurangi ketergantungan antara keduanya. MVVM menggunakan sistem pengikatan data (data binding) untuk otomatis memperbarui tampilan ketika data berubah di ViewModel. Meskipun ini mengurangi kode boilerplate untuk pembaruan tampilan, penggunaan data binding yang kompleks dapat membuat debugging aplikasi menjadi sedikit lebih rumit.
+<br/>
 
+
+# **Tugas 3: Implementasi Form dan Data Delivery pada Django**
 ## **Membuat input `form` untuk menambahkan objek model pada app sebelumnya**
-
-1. Mengatur routing dari `/main` ke `/` agar dapat langsung mengakses halaman utama tanpa menerima pesan `404 error` jika tidak menambahkan `/main/` secara manual pada URL.
+1. Mengatur routing dari `main/` ke `/` agar dapat langsung mengakses halaman utama tanpa menerima pesan `404 error` jika tidak menambahkan `/main/` secara manual pada URL.
     * Buka `urls.py` yang ada pada folder `inventory_app` dan modifikasi *path* `main/` menjadi `''` pada `urlpatterns` seperti berikut.
         ```python
         urlpatterns = [
@@ -569,7 +598,6 @@ MVC (Model-View-Controller), MVT (Model-View-Template), dan MVVM (Model-View-Vie
         ``` 
 
 ## **Tambahkan 5 fungsi `views` untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID**
-
 1. Ubah fungsi `show_inventory` dalam file `views.py` pada direktori `main` untuk dapat menghasilkan *render* HTML yang mencakup informasi tentang pembuat web dan data item yang telah dimasukkan.
     ```python
     def show_inventory(request):
@@ -620,7 +648,6 @@ MVC (Model-View-Controller), MVT (Model-View-Template), dan MVVM (Model-View-Vie
     ```
 
 ## **Membuat routing URL untuk masing-masing `views` yang telah ditambahkan pada poin 2**
-
 Buka file `urls.py` pada direktori `main` dan *import* fungsi yang sudah dibuat pada poin 2, yaitu `show_xml`, `show_json`, `show_xml_by_id`, dan `show_json_by_id`. Kemudian perbarui *path url* yang di dalam `urlpatterns` untuk mengakses semua fungsi tersebut.
 ```python
 from django.urls import path
@@ -638,13 +665,25 @@ urlpatterns = [
 ]
 ```
 ## **Apa perbedaan antara form `POST` dan form `GET` dalam Django?**
+Dalam Django, metode POST dan GET adalah dua cara yang berbeda untuk mengirim data antara browser dan server web saat mengirim informasi dari formulir HTML. Metode POST digunakan ketika Anda perlu mengirim data yang bersifat sensitif dan ingin memastikan data tersebut tidak terlihat dalam URL. Contohnya, ketika mengirim kata sandi atau informasi pribadi. Data dikirim dalam badan permintaan HTTP, sehingga data tersebut tidak terlihat oleh pengguna atau tidak terekspose selama proses pengiriman. Di sisi lain, metode GET mengirim data sebagai bagian dari URL, sehingga membuat data tersebut terlihat di URL. Ini cocok untuk operasi baca saja, seperti pencarian atau pengiriman parameter melalui URL. Anda dapat mengakses data yang dikirim melalui metode GET di Django menggunakan objek request.GET.
+
+Pemilihan metode juga bergantung pada tindakan yang ingin Anda lakukan di server. Biasanya, metode POST digunakan saat Anda perlu melakukan operasi yang mengubah atau menyimpan data di server, seperti menambahkan entri ke database, mengirim email, atau melakukan tindakan lain yang mempengaruhi status server. Sedangkan metode GET lebih cocok untuk operasi yang hanya membaca data di server tanpa mengubahnya, seperti pencarian, penyaringan, atau pengambilan data yang sudah ada.
+
+Selain itu, ada perbedaan dalam hal keamanan dan bookmarking. Data yang dikirim dengan metode POST tidak cocok untuk di-bookmark karena data tersebut tidak terlihat dalam URL, sehingga lebih aman untuk data yang sensitif. Sebaliknya, metode GET cocok untuk di-bookmark karena data tersebut terlihat di URL, tetapi Anda harus berhati-hati karena hal ini tidak cocok untuk data yang bersifat sensitif dan lebih rentan terhadap potensi serangan. Penting juga untuk diingat bahwa permintaan dengan metode POST biasanya tidak di-cache oleh browser, sehingga pengguna selalu mendapatkan respon yang "segar" dari server. Sementara metode GET dapat di-cache oleh browser, yang dapat meningkatkan kinerja, tetapi harus diawasi agar pengguna tidak melihat data yang sudah kedaluwarsa.
 
 ## **Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?**
+Dalam rangka yang lebih singkat, XML digunakan untuk data yang sangat terstruktur, JSON untuk data yang lebih sederhana dan efisien di aplikasi web, sementara HTML untuk membuat tampilan halaman web yang bisa dilihat oleh manusia.
+
+XML adalah bahasa markup yang digunakan untuk menyimpan dan mengirim data dengan struktur yang ketat. Ini menggunakan tag dan atribut untuk mendefinisikan elemen data. Cocok untuk data yang kompleks dan harus validasi ketat, tetapi file XML cenderung besar dan parsingnya memakan banyak sumber daya.
+
+JSON adalah format pertukaran data yang lebih ringan dan mudah dibaca oleh mesin. Ini menggunakan struktur objek dan array sederhana, ideal untuk pertukaran data cepat dan efisien dalam aplikasi web. Mesin dapat dengan mudah mengurai dan menghasilkan JSON dalam berbagai bahasa pemrograman. Namun, JSON tidak memiliki dukungan bawaan untuk definisi skema data yang kuat.
+
+HTML adalah bahasa markup yang digunakan untuk membuat tampilan halaman web yang bisa diakses oleh manusia melalui peramban web. Tidak digunakan untuk pertukaran data struktural antara aplikasi, tetapi dapat menyematkan data untuk digunakan dalam interaksi klien-sisi dengan JavaScript. HTML adalah dasar dari semua halaman web modern.
 
 ## **Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?**
+JSON, dengan format teks yang ringan dan fleksibilitas struktur data, menyederhanakan tugas pengembang dalam memahami, mengelola, dan menggambarkan data yang kompleks. Ketersediaan dukungan lintas bahasa pemrograman dan platform membuatnya sangat serbaguna, dan itulah sebabnya mengapa JSON digunakan secara luas dalam aplikasi web modern, terutama saat berinteraksi dengan layanan web dan API eksternal. Kelebihan lainnya adalah JSON memiliki fitur keamanan yang dapat mengurangi risiko serangan injeksi kode. Di dalam konteks aplikasi real-time, JSON memungkinkan pembaruan data yang efisien antara klien dan server, yang menghasilkan peningkatan pengalaman pengguna. Dukungan yang luas dari berbagai kerangka kerja dan perpustakaan web menjadikannya alat yang sangat penting dalam pengembangan aplikasi web.
 
 ## **Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman**
-
 1. Pastikan server sudah berjalan dengan perintah `python manage.py runserver`.
 
 2. Buka Postman dan buat sebuah *request* baru dengan *method* `GET` dan  isi dengan beberapa *url* sebagai berikut untuk mengetes apakah data terkirimkan dengan baik.
