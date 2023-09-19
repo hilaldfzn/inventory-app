@@ -3,20 +3,20 @@ from main.models import InventoryItem
 
 class mainTest(TestCase):
     def test_main_url_is_exist(self):
-        response = Client().get('/main/')
+        response = Client().get('')
         self.assertEqual(response.status_code, 200)
 
     def test_main_using_main_template(self):
-        response = Client().get('/main/')
+        response = Client().get('')
         self.assertTemplateUsed(response, 'main.html')
 
     def test_response_has_utf8_charset(self):
-        response = Client().get('/main/')
+        response = Client().get('')
         content_type = response.get('Content-Type', '')
         self.assertIn('utf-8', content_type.lower())
     
     def test_inventory_items_displayed(self):
-        response = self.client.get('/main/')
+        response = self.client.get('')
         for item in InventoryItem.objects.all():
             self.assertContains(response, item.name)
             self.assertContains(response, f'{item.price} BP')
@@ -24,7 +24,7 @@ class mainTest(TestCase):
 
     def test_inventory_items_not_displayed(self):
         InventoryItem.objects.all().delete()
-        response = self.client.get('/main/')
+        response = self.client.get('')
         for item in InventoryItem.objects.all():
             self.assertNotContains(response, item.name)
     

@@ -43,11 +43,6 @@
           color: black;
         }
 
-        .nav__logo-img {
-          width: 2rem;
-          font-size: 3rem;
-        }
-
         .item-count {
           background-color: #5F6F94;
           color: white;
@@ -134,7 +129,6 @@
   <body>  
     <div class="header">
       <h1 class="hero-name">
-        <img src="../../image/logo.png" alt="" class="nav__logo-img">
         Inventory <span>App</span>
       </h1>
     </div>  
@@ -156,13 +150,14 @@
         {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
 
         {% for item in list_items %}
-          <tr>
+        <tr>
               <th>{{ item.name }}</th>
               <th>{{ item.amount }}</th>
               <th>{{ item.price }} BP</th>
               <th>{{ item.power }}</th>
               <th>{{ item.category }}</th>
               <th>{{ item.description }}</th>
+        </tr>
         {% endfor %}
       </table>
     </div>

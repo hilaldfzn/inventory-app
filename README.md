@@ -591,7 +591,7 @@ Mengimplementasikan Form dan Data Delivery dan menerapkan beberapa konsep yang t
         return render(request, 'main.html', context)
     ```
 
-2. Buka `views.py` pada direktori `main` dan tambahkan *import* `HttpResponse` dan `Serializer` di bagian paling atas.
+2. Buka `views.py` pada direktori `main` dan tambahkan *import* `HttpResponse` dan `serializers` di bagian paling atas.
     ```python
     from django.http import HttpResponse
     from django.core import serializers
@@ -674,13 +674,13 @@ urlpatterns = [
     </div>
 ...
 ```
-Berikut ini adalah tampilan yang dihasilkan setelah menambahkan fitur yang menampilkan total item yang tersimpan pada aplikasi:
+Berikut ini adalah tampilan yang dihasilkan setelah menambahkan fitur di atas:
 ![alt-text](image/bonus-jumlah-item.jpg)
 
 ## **Apa perbedaan antara form `POST` dan form `GET` dalam Django?**
-Dalam Django, metode `POST` dan `GET` adalah dua pendekatan berbeda untuk mengirim data antara browser dan web server saat mengirim informasi dari form HTML. Metode `POST` digunakan untuk mengirim data dari browser ke web server dengan cara yang lebih aman dan tersembunyi, karena data dikirimkan dalam badan permintaan HTTP sehingga data tidak terlihat oleh pengguna selama proses pengirimian. Contohnya, ketika mengirim kata sandi atau informasi pribadi. Di sisi lain, metode `GET` mengirim data sebagai bagian dari *URL*, sehingga data dapat terlihat oleh siapa pun yang melihat *URL*. Ini cocok untuk operasi baca saja, seperti pencarian atau pengiriman parameter melalui *URL*. Pengaksesan data yang dikirim melalui metode `GET` di Django dapat menggunakan objek `request.GET`.
+Dalam Django, metode `POST` dan `GET` adalah dua pendekatan berbeda untuk mengirim data antara browser dan web server saat mengirim informasi dari form HTML. Metode `POST` digunakan untuk mengirim data dari browser ke web server dengan cara yang lebih aman dan tersembunyi, karena data dikirimkan dalam badan permintaan HTTP sehingga data tidak terlihat oleh pengguna selama proses pengiriman. Contohnya, ketika mengirim kata sandi atau informasi pribadi. Di sisi lain, metode `GET` mengirim data sebagai bagian dari *URL*, sehingga data dapat terlihat oleh siapa pun yang melihat *URL*. Ini cocok untuk operasi baca saja, seperti pencarian atau pengiriman parameter melalui *URL*. Pengaksesan data yang dikirim melalui metode `GET` di Django dapat menggunakan objek `request.GET`.
 
-Selain itu, ada perbedaan dalam hal bookmarking dan keamanan. Data yang dikirim dengan metode `POST` tidak cocok untuk di-bookmark karena data tersebut tidak terlihat pada *URL*, sehingga lebih aman untuk data yang sensitif. Sementara metode `GET` cocok untuk di-bookmark karena data terlihat pada *URL*, tetapi tetap harus berhati-hati karena hal ini mungkin tidak cocok untuk data yang bersifat sensitif dan lebih rentan terhadap potensi serangan. Penting juga untuk diingat bahwa permintaan dengan metode `POST` biasanya tidak di-cache oleh browser, sehingga pengguna selalu mendapatkan *fresh response* dari server. Di sisi lain, metode `GET` di-cache oleh browser, di mana dapat meningkatkan kinerja dan tetap harus diawasi karena pengguna mungkin melihat data yang sudah kedaluwarsa.
+Selain itu, ada perbedaan dalam hal bookmarking dan keamanan. Data yang dikirim dengan metode `POST` tidak cocok untuk di-bookmark karena data tersebut tidak terlihat pada *URL*, sehingga lebih aman untuk data yang sensitif. Sementara metode `GET` cocok untuk di-bookmark karena data terlihat pada *URL*, tetapi tetap harus berhati-hati karena hal ini mungkin tidak cocok untuk data yang bersifat sensitif dan lebih rentan terhadap potensi serangan. Penting juga untuk diingat bahwa permintaan dengan metode `POST` biasanya tidak di-cache oleh browser, sehingga pengguna selalu mendapatkan *fresh response* dari server. Di sisi lain, metode `GET` di-cache oleh browser, di mana dapat meningkatkan kinerja dan tetap harus diawasi karena pengguna mungkin melihat data yang sudah kadaluwarsa.
 
 Penting juga untuk mempertimbangkan peran pemrosesan server saat memilih metode. Secara umum, metode `POST` digunakan ketika perlu melakukan tindakan yang berdampak pada server, seperti mengubah atau menyimpan data contohnya mengirim email, menambahkan catatan ke database, atau melakukan operasi lain yang memengaruhi status server. Sebaliknya, metode `GET` lebih cocok untuk tindakan yang hanya melibatkan pembacaan data dari server tanpa melakukan perubahan, seperti pencarian, penyaringan, atau pengambilan data yang sudah ada.
 
