@@ -1,3 +1,4 @@
+import datetime
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
@@ -9,7 +10,6 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from main.forms import ProductForm
 from main.models import InventoryItem
-import datetime
 
 @login_required(login_url='/login')
 def show_inventory(request):

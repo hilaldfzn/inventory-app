@@ -718,6 +718,7 @@ Mengimplementasikan konsep authentication, session, cookies dan menerapkan beber
 1. Mengaktifkan Python *virtual environment*.
 2. Buka `views.py` yang ada pada subdirektori `main` dan tambahkan beberapa import seperti di bawah ini.
     ```python
+    import datetime
     from django.contrib.auth.decorators import login_required
     from django.contrib.auth.forms import UserCreationForm
     from django.contrib.auth import authenticate, login, logout
@@ -729,22 +730,21 @@ Mengimplementasikan konsep authentication, session, cookies dan menerapkan beber
     from django.urls import reverse
     from main.forms import ProductForm
     from main.models import InventoryItem
-    import datetime
     ```
 3. Tambahkan beberapa fungsi untuk `register`, `login`, dan `logout` dengan parameter `request`.
     ```python
     def register(request):
-    form = UserCreationForm()
+        form = UserCreationForm()
 
-    if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your account has been successfully created!')
-            return redirect('main:login')
-        
-    context = {'form':form}
-    return render(request, 'register.html', context)
+        if request.method == "POST":
+            form = UserCreationForm(request.POST)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Your account has been successfully created!')
+                return redirect('main:login')
+            
+        context = {'form':form}
+        return render(request, 'register.html', context)
 
     def login_user(request):
         if request.method == 'POST':
@@ -822,6 +822,7 @@ Mengimplementasikan konsep authentication, session, cookies dan menerapkan beber
     ```
 6. Tambahkan potongan kode ini di dalam *tag div* dengan nama class `header-controls` pada berkas `main.html`.
     ```html
+    ...
     <div class="header-controls">
         ...
         <a href="{% url 'main:logout' %}">
@@ -830,6 +831,7 @@ Mengimplementasikan konsep authentication, session, cookies dan menerapkan beber
             </button>
         </a>
     </div>
+    ...
     ```
 7. Buka `urls.py` yang berada di dalam direktori `main`. Tambahkan import untuk fungsi `register`, `login_user`, dan `logout_user`. Lalu tambahkan path untuk ketiga fungsi tersebut di list `urlpatterns`.
     ```python
@@ -875,16 +877,16 @@ Username: hilaljuga
 3. Buka `views.py` dan modifikasi fungsi `create_product` seperti di bawah ini.
     ```python
     def create_product(request):
-    form = ProductForm(request.POST or None)
+        form = ProductForm(request.POST or None)
 
-    if form.is_valid() and request.method == "POST":
-        product = form.save(commit=False)
-        product.user = request.user
-        product.save()
-        return HttpResponseRedirect(reverse('main:show_inventory'))
+        if form.is_valid() and request.method == "POST":
+            product = form.save(commit=False)
+            product.user = request.user
+            product.save()
+            return HttpResponseRedirect(reverse('main:show_inventory'))
 
-    context = {'form': form}
-    return render(request, "create_product.html", context)
+        context = {'form': form}
+        return render(request, "create_product.html", context)
     ```
 4. Modifikasi fungsi `show_inventory` menjadi seperti potongan kode di bawah ini.
     ```python
@@ -899,7 +901,7 @@ Username: hilaljuga
 5. Menyimpan perubahan dan melakukan migrasi dengan `python manage.py makemigrations`.
 6. Jika terjadi error saat melakukan migrasi model, maka pilih `1` untuk menetapkan *default value* untuk *field user* pada semua *row* yang telah dibuat pada basis data.
 7. Ketik angka `1` lagi untuk menetapkan *user* dengan ID 1 (yang sudah dibuat sebelumnya) pada model yang sudah ada.
-8. Jalankan `perintah python manage.py migrate` untuk menerapkan perubahan migrasi yang telah dibuat pada langkah sebelumnya.
+8. Jalankan perintah `python manage.py migrate` untuk menerapkan perubahan migrasi yang telah dibuat pada langkah sebelumnya.
 
 ## **Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi**
 1. Buka `views.py` dan tambahkan beberapa import berikut.
@@ -931,12 +933,14 @@ Username: hilaljuga
     ```
 4. Modifikasi file `main.html` pada `main/templates` dengan potongan kode berikut.
     ```html
+    ...
     <div class="header-controls">
         <div class="last-login">
             <h4>Sesi terakhir login: {{ last_login }}</h4>
         </div>
         ...
     </div>
+    ...
     ```
 5. Jalankan perintah `python manage.py runserver` dan cobalah untuk login. Data *last login* akan muncul di halaman *main*.
 6. Untuk memeriksa data cookie `last_login`, gunakan fitur *inspect element* dan buka tab *Application* atau *Storage*. Setelah itu, klik opsi *Cookies* untuk melihat semua data cookies yang tersedia. Selain `last_login`, kita juga dapat melihat data lain seperti `sessionid` dan `csrftoken`. Berikut ini adalah contoh tampilannya.
