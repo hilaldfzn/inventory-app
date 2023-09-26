@@ -190,7 +190,7 @@ Mengimplementasikan Model-View-Template (MVT) Django dan menerapkan beberapa kon
     * `name` sebagai nama item dengan tipe `CharField`.
     * `amount` sebagai jumlah item dengan tipe `IntegerField`.
     * `description` sebagai deskripsi item dengan tipe `TextField`.<br/>
-Dipersilakan untuk menambahkan atribut lainnya jika diinginkan, seperti `price`, `power`, `category`. Namun, model aplikasi Anda wajib memiliki ketiga atribut wajib di atas (`name`, `amount`, `description`).
+Dipersilakan untuk menambahkan atribut lainnya jika diinginkan, seperti `price`, `power`, `category`. Namun, model aplikasi wajib memiliki ketiga atribut wajib di atas (`name`, `amount`, `description`).
 2. Isi file `models.py` dengan kode berikut.
     ```python
     from django.db import models
@@ -769,7 +769,54 @@ Mengimplementasikan konsep authentication, session, cookies dan menerapkan beber
         response.delete_cookie('last_login')
         return response
     ```
-4. Buat file HTML baru dengan nama `register.html` pada direktori `main/templates`. Isi dari `register.html` sebagai berikut berikut.
+4. Buat file HTML baru dengan nama `login.html` pada direktori `main/templates`. Isilah `login.html` dengan kode di bawah ini.
+    ```html
+    {% extends 'base.html' %}
+
+    {% block meta %}
+        <title>Login</title>
+    {% endblock meta %}
+
+    {% block content %}
+
+    <div class = "login">
+        <div class="login-container">
+            <div class="login-forms">
+                <form method="POST" action="" class="login-field">
+                    {% csrf_token %}
+                    <h1 class="login-title">Login</h1>
+        
+                    <div class="login-box">
+                        <i class='bx bx-user login__icon'></i>
+                        <input type="text" name="username" placeholder="Username" class="form-control">
+                    </div>
+        
+                    <div class="login-box">
+                        <i class='bx bx-lock-alt login__icon'></i>
+                        <input type="password" name="password" placeholder="Password" class="form-control">
+                    </div>
+        
+                    <input class="login_btn" type="submit" value="Login">
+        
+                    <div>
+                        <span class="login-account">Don't have an account yet?</span>
+                        <span class="register-button"><a href="{% url 'main:register' %}">Register Now</a></span>
+                    </div>
+                </form>
+            </div>
+                    
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    {% endblock content %}
+    ```
+
+5. Buat file HTML baru dengan nama `register.html` pada direktori `main/templates`. Isilah `register.html` dengan kode di bawah ini.
     ```html
     {% extends 'base.html' %}
 
@@ -904,7 +951,7 @@ Username: hilaljuga
 8. Jalankan perintah `python manage.py migrate` untuk menerapkan perubahan migrasi yang telah dibuat pada langkah sebelumnya.
 
 ## **Menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi**
-1. Buka `views.py` dan tambahkan beberapa import berikut.
+1. Buka `views.py` dan tambahkan beberapa import berikut (jika belum ada).
     ```python
     import datetime
     from django.http import HttpResponseRedirect
