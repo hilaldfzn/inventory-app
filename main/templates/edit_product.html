@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block meta %}
-    <title>Add Item Page</title>
+    <title>Edit Item Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <link rel="stylesheet"  href="{% static 'create_product.css' %}">
@@ -12,7 +12,7 @@
 {% block content %}
 
 <div class="container">
-    <h1 class="title">Add New Item</h1>
+    <h1 class="title">Edit Item</h1>
     <form method="POST">
         {% csrf_token %}
         <table class="form-table">
@@ -20,7 +20,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <input type="submit" value="Add Item"/>
+                    <input type="submit" value="Edit Item"/>
                 </td>
             </tr>
         </table>

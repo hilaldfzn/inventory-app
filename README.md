@@ -1161,3 +1161,303 @@ Penggunaan cookies dalam pengembangan web pada umumnya dianggap aman asalkan dil
 * Cookie Hijacking atau Man-in-the-Middle Attack: Jika situs kita tidak dienkripsi dengan benar menggunakan HTTPS, ada risiko cookies bisa dicuri saat data dikirim antara klien dan server.
 
 * Third-Party Cookies: Cookie dari pihak ketiga bisa digunakan untuk melacak perilaku pengguna tanpa sepengetahuan mereka, yang merupakan masalah privasi.
+<br/>
+
+# **Tugas 5: Desain Web menggunakan HTML, CSS dan Framework CSS**
+Mengimplementasikan desain web berdasarkan beberapa hal yang telah dipelajari di kelas selama di kelas dan tutorial (CSS, Framework, dsb) serta menjawab beberapa pertanyaan.
+
+## **Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma)**
+Pada proyek Inventory App ini, saya menggunakan eksternal CSS serta bootstrap untuk membuat styling di beberapa fitur. Singkatnya, langkah yang saya lakukan adalah membuat selector untuk mengelompokkan mana saja yang akan di styling dengan model yang sama, apakah ingin keseluruhan diubah atau hanya beberapa bagian saja. Jika sudah, kita mulai styling untuk selectornya.
+
+### **Kustomisasi halaman login, register, dan tambah inventori**
+* Login Page
+![alt-text](static/image/login-page.jpg)
+
+* Register Page
+![alt-text](static/image/register-page.jpg)
+
+* Add Item Page
+![alt-text](static/image/add-item-page.jpg)
+
+* Edit Item Page
+![alt-text](static/image/edit-item-page.jpg)
+
+* Main Page
+![alt-text](static/image/main-page.jpg)
+
+## **Bonus**
+Pada `static/main.css` tambahkan styling potongan kode di bawah untuk memberikan warna yang berbeda (background) pada baris terakhir dari item pada inventori.
+```css
+tr:last-child {
+    background-color: rgba(95, 196, 95, 0.8);
+}
+```
+
+## **Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya**
+
+Selector-element adalah salah satu bagian penting dari CSS (Cascading Style Sheets) yang digunakan untuk memilih elemen HTML yang akan diberi gaya atau tampilan. Setiap elemen selector memiliki manfaat dan waktu yang tepat untuk digunakan sesuai dengan kebutuhan desain dan struktur halaman web. 
+
+Berikut adalah beberapa elemen selector yang umum digunakan beserta manfaat dan waktu yang tepat untuk menggunakannya:
+
+1. Selector Universal (Universal Selector)
+    Selector universal (*) memungkinkan untuk memilih semua elemen dalam dokumen HTML. Selector ini biasa digunakan untuk memberi gaya secara umum pada semua elemen. Selector universal perlu digunakan dengan hati-hati karena dapat memberikan dampak pada seluruh elemen di halaman web. Elemen ini sebaiknya digunakan hanya dalam kasus tertentu di mana Anda ingin memberikan gaya secara global.
+
+2. Selector Elemen (Element Selector)
+    Selector elemen memungkinkan untuk memilih semua elemen HTML dengan tipe tertentu. Elemen ini umumnya digunakan untuk mengganti gaya elemen-elemen dasar. Selector elemen tepat digunakan setiap kali ingin mengganti gaya atau menargetkan semua elemen dengan tipe tertentu.
+
+3. Selector *class* (Class Selector):
+    Selector *class*  memungkinkan untuk memilih elemen berdasarkan nilai atribut class. Hal ini sangat berguna ketika ingin mengganti gaya beberapa elemen yang memiliki *class* yang sama. Selector *class*  tepat digunakan ketika ingin mengganti gaya atau menargetkan elemen-elemen dengan *class*  tertentu.
+
+4. Selector ID (ID Selector)
+    Selector ID memungkinkan untuk memilih elemen berdasarkan nilai atribut id. Selector ID biasanya digunakan untuk menargetkan elemen tunggal yang unik dalam halaman web. Selector ini sebaiknya digunakan dengan bijak dan hanya untuk elemen yang benar-benar unik dalam halaman web. Terlalu banyak penggunaan ID dapat menyulitkan pemeliharaan kode CSS.
+
+5. Selector Keturunan (Descendant Selector):
+    Selector keturunan memungkinkan untuk memilih elemen yang menjadi anak dari elemen lain. Selector ini berguna untuk mengganti gaya elemen-elemen dalam konteks tertentu, misalnya, elemen dalam sebuah div. Selector keturunan tepat digunakan ketika ingin menargetkan elemen dalam konteks tertentu, seperti elemen yang berada dalam suatu div atau elemen yang ada dalam elemen lain.
+
+6. Selector Pseudo-class (Pseudo-class Selector):
+    Selector pseudo-class memungkinkan untuk memilih elemen berdasarkan keadaan atau interaksi pengguna. Misalnya, penggunaan :hover untuk mengganti gaya elemen saat mouse mengarah padanya. Selector pseudo-class tepat digunakan ketika ingin mengganti gaya elemen berdasarkan keadaan atau tindakan tertentu.
+
+7. Selector Atribut (Attribute Selector):
+    Selector atribut memungkinkan untuk memilih elemen berdasarkan atribut dan nilainya, seperti atribut src atau href. Selector ini berguna ketika ingin mengganti gaya atau menargetkan elemen berdasarkan atribut tertentu. Selector atribut tepat digunakan ketika perlu menargetkan elemen berdasarkan nilai atribut tertentu.
+
+8. Selector Sibling (Sibling Selector):
+    Selector sibling memungkinkan untuk memilih elemen yang merupakan saudara atau berdekatan dengan elemen lain. Misalnya, ketika memilih elemen yang sejajar dengan elemen yang memiliki kelas tertentu. Selector sibling tepat digunakan ketika ingin mengganti gaya elemen yang berdekatan atau sejajar dengan elemen lain.
+
+9. Selector Anak (Child Selector):
+    Selector anak langsung memungkinkan untuk memilih elemen yang merupakan anak langsung dari elemen lain. Selector ini berguna ketika ingin menargetkan elemen anak langsung dalam sebuah elemen, tanpa mempengaruhi elemen anak yang lebih dalam. Gunakan selector anak langsung ketika ingin menargetkan elemen anak langsung dari elemen lain.
+
+10. Selector Grup (Grouping Selector):
+    Selector grup memungkinkan untuk mengelompokkan beberapa selector dalam satu peraturan CSS. Selector ini digunakan untuk mengatur gaya yang sama untuk beberapa elemen sekaligus. Selector grup tepat digunakan ketika ingin memberikan gaya yang sama untuk beberapa elemen sekaligus.
+
+## **Jelaskan HTML5 Tag yang kamu ketahui**
+
+HTML5 adalah versi terbaru dari bahasa markup HTML yang digunakan untuk membangun struktur dan konten halaman web. HTML5 mengenalkan beberapa elemen dan atribut baru yang memungkinkan pengembang web untuk membuat konten web yang lebih kaya dan interaktif. Berikut adalah beberapa tag HTML5 yang saya ketahui:
+
+1. **`<html>`** <br/>
+Tag `<html>` adalah tag akar (root tag) dari setiap halaman HTML. Semua tag lain berada di dalam tag ini. Tag ini mendefinisikan awal dari halaman web dan akhir dari halaman web.
+
+   Contoh:
+   ```html
+   <html>
+   <!-- Konten halaman web di sini -->
+   </html>
+   ```
+
+2. **`<head>`** <br/>
+Tag `<head>` berisi informasi meta tentang halaman web. Tag ini adalah bagian yang tidak terlihat pada halaman web itu sendiri, tetapi berisi informasi penting seperti judul halaman, metadata, dan tautan ke stylesheet.
+
+   Contoh:
+   ```html
+   <head>
+       <title>Contoh Halaman Web</title>
+       <meta charset="UTF-8">
+       <link rel="stylesheet" href="style.css">
+   </head>
+   ```
+
+3. **`<time>`** <br/>
+Tag `<time>` digunakan untuk menandai konten yang berkaitan dengan waktu atau tanggal dalam dokumen HTML. Tag ini membantu mesin pencari dan peramban web memahami dan menginterpretasikan informasi waktu dengan lebih baik.
+
+   Contoh:
+   ```html
+    <p>Acara: <time datetime="2023-10-15T15:30:00">15 Oktober 2023, 15:30</time></p>
+
+   ```
+
+4. **`<meta>`** <br/>
+Tag `<meta>` digunakan untuk menyisipkan metadata ke dalam halaman web, seperti karakter encoding, deskripsi, kata kunci, dan informasi lainnya yang berguna untuk mesin pencari dan browser.
+
+   Contoh:
+   ```html
+   <meta charset="UTF-8">
+   <meta name="description" content="Ini adalah contoh halaman web">
+   ```
+
+5. **`<link>`** <br/>
+Tag `<link>` digunakan untuk menghubungkan halaman HTML dengan berkas CSS eksternal, yang mengatur gaya dan tampilan halaman web.
+
+   Contoh:
+   ```html
+   <link rel="stylesheet" href="style.css">
+   ```
+
+6. **`<body>`** <br/>
+Tag `<body>` berisi semua konten yang akan ditampilkan di halaman web, seperti teks, gambar, video, dan tag lainnya. Tag ini adalah bagian yang terlihat oleh pengguna.
+
+   Contoh:
+   ```html
+   <body>
+       <h1>Selamat Datang di Contoh Halaman Web</h1>
+       <p>Ini adalah halaman web sederhana.</p>
+   </body>
+   ```
+
+7. **`<img>`** <br/>
+Tag `<img>` digunakan untuk menampilkan gambar di halaman web. Tag memerlukan atribut `src` yang berisi URL gambar dan atribut `alt` yang berisi teks alternatif untuk gambar.
+
+   Contoh:
+   ```html
+   <img src="gambar.jpg" alt="Deskripsi Gambar">
+   ```
+   
+8. **`<nav>`** <br/>
+Tag `<nav>` digunakan untuk mendefinisikan bagian navigasi dalam halaman web. Tag ini biasanya berisi tautan menu.
+
+   Contoh:
+   ```html
+   <nav>
+       <ul>
+           <li><a href="#">Beranda</a></li>
+           <li><a href="#">Tentang Kami</a></li>
+       </ul>
+   </nav>
+   ```
+
+9. **`<section>`** <br/>
+Tag `<section>` digunakan untuk mengelompokkan konten yang memiliki tema atau topik yang sama dalam halaman web.
+
+   Contoh:
+   ```html
+   <section>
+       <h2>Artikel Terbaru</h2>
+       <p>Ini adalah artikel terbaru di halaman web kami.</p>
+   </section>
+   ```
+
+10. **`<article>`** <br/>
+Tag `<article>` digunakan untuk mengelompokkan konten yang merupakan sebuah artikel atau bagian utama dari halaman web.<br/>
+    Contoh:
+    ```html
+    <article>
+        <h2>Judul Artikel</h2>
+        <p>Ini adalah konten artikel.</p>
+    </article>
+    ```
+
+11. **`<footer>`** <br/>
+Tag `<footer>` digunakan untuk mendefinisikan bagian bawah (footer) dari halaman web, yang sering berisi informasi seperti hak cipta, tautan penting, dan informasi kontak. <br/>
+    Contoh:
+    ```html
+    <footer>
+        <p>&copy; 2023 Contoh Perusahaan</p>
+    </footer>
+    ```
+
+12. **`<header>`** <br/>
+Tag `<header>` digunakan untuk mendefinisikan bagian atas (header) dari halaman web. Tag ini sering berisi judul, logo, dan tag lain yang ingin ditempatkan di bagian atas halaman. <br/>
+    Contoh:
+    ```html
+    <header>
+        <h1>Logo Perusahaan</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Tentang Kami</a></li>
+            </ul>
+        </nav>
+    </header>
+    ```
+
+13. **`<a>`** <br/>
+Tag `<a>` digunakan untuk membuat tautan (link) ke halaman web lain atau sumber lainnya. Tag ini memerlukan atribut `href` yang berisi URL tujuan tautan.<br/>
+    Contoh:
+    ```html
+    <a href="https://www.contoh.com">Kunjungi Contoh.com</a>
+    ```
+
+14. **`<video>` dan `<audio>`** <br/>
+Tag `<video>` digunakan untuk menampilkan video, sementara tag `<audio>` digunakan untuk menampilkan audio atau suara. Tag ini memerlukan atribut `src` yang berisi URL media. <br/>
+    Contoh:
+    ```html
+    <video src="video.mp4" controls></video>
+    <audio src="audio.mp3" controls></audio>
+    ```
+
+15. **`<input>`** <br/>
+Tag `<input>` digunakan untuk membuat kotak input, seperti kotak teks, kotak seleksi, atau tombol. Jenis input ditentukan oleh atribut `type`.<br/>
+    Contoh:
+    ```html
+    <input type="text" name="nama" placeholder="Masukkan Nama Anda">
+    <input type="checkbox" name="setuju" id="setuju">
+    <label for="setuju">Saya setuju dengan syarat dan ketentuan.</label>
+    ```
+
+16. **`<canvas>`** <br/>
+Tag `<canvas>` digunakan untuk menggambar grafik, animasi, dan grafis lainnya secara dinamis menggunakan JavaScript. <br/>
+    Contoh:
+    ```html
+    <canvas id="myCanvas" width="300" height="150"></canvas>
+    ```
+
+17. **`<svg>`** <br/>
+Tag `<svg>` digunakan untuk membuat grafik vektor dan grafis skalabel yang dapat diubah ukurannya tanpa kehilangan kualitas. Ini digunakan dengan elemen-elemen SVG seperti `<circle>`, `<rect>`, dan lainnya. <br/>
+    Contoh:
+    ```html
+    <svg width="100" height="100">
+        <circle cx="50" cy="50" r="40" stroke="black" stroke-width="2" fill="red" />
+    </svg>
+    ```
+
+18. **`<ul>` dan `<li>`** <br/>
+Tag `<ul>` digunakan untuk membuat daftar tak terurut (unordered list), sedangkan tag `<li>` digunakan untuk membuat item dalam daftar. <br/>
+    Contoh:
+    ```html
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    ```
+
+19. **`<ol>`** <br/>
+Tag `<ol>` digunakan untuk membuat daftar terurut (ordered list) dengan nomor atau huruf. <br/>
+    Contoh:
+    ```html
+    <ol>
+        <li>Item A</li>
+        <li>Item B</li>
+        <li>Item C</li>
+    </ol>
+    ```
+
+20. **`<dl>`, `<dt>`, dan `<dd>`** <br/>
+ Tag `<dl>` digunakan untuk membuat daftar deskripsi (description list). Tag `<dt>` digunakan untuk mendefinisikan istilah dalam daftar, sementara tag `<dd>` digunakan untuk memberikan deskripsi terkait istilah tersebut. <br/>
+    Contoh:
+    ```html
+    <dl>
+        <dt>HTML</dt>
+        <dd>HyperText Markup Language</dd>
+        <dt>CSS</dt>
+        <dd>Cascading Style Sheets</dd>
+    </dl>
+    ```
+
+## **Jelaskan perbedaan antara margin dan padding**
+Secara singkat, Margin adalah ruang di sekitar elemen HTML, yang berfungsi untuk mengatur jarak antara elemen tersebut dengan elemen-elemen lain di sekitarnya. Margin tidak memengaruhi ukuran elemen itu sendiri, tetapi hanya mengatur jaraknya dari elemen-elemen lain di sekitarnya. Sementara itu, Padding adalah ruang di dalam elemen HTML, yang berfungsi untuk mengatur jarak antara konten elemen dan batas (border) elemen tersebut. Padding memengaruhi ukuran elemen itu sendiri, karena ruang padding tersebut dihitung sebagai bagian dari elemen tersebut.
+
+Perbedaan dari Margin dan Padding dapat dilihat secara lebih jelas dalam tabel berikut:
+| Aspek           | Margin                                   | Padding                                |
+|-----------------|------------------------------------------|----------------------------------------|
+| Definisi        | Ruang di luar elemen konten              | Ruang di dalam elemen konten           |
+| Fungsi Utama    | Mengatur jarak antara elemen dengan elemen lain di sekitarnya | Mengatur jarak antara konten elemen dengan batas elemen itu sendiri |
+| Pengaruh Terhadap Ukuran Elemen | Tidak mempengaruhi ukuran elemen itu sendiri | Mempengaruhi ukuran elemen itu sendiri   |
+| Pengaturan      | Margin dapat diatur menggunakan properti seperti `margin-top`, `margin-right`, `margin-bottom`, dan `margin-left` | Padding dapat diatur menggunakan properti seperti `padding-top`, `padding-right`, `padding-bottom`, dan `padding-left` |
+| Penerapan Umum  | Digunakan untuk mengatur jarak antara elemen-elemen, misalnya mengatur jarak antara elemen-elemen dalam layout | Digunakan untuk mengatur ruang internal elemen, misalnya mengatur ruang dalam kotak teks atau elemen konten lainnya |
+| Tumpang Tindih  | Margin elemen dapat tumpang tindih dengan margin elemen lainnya dan mempengaruhi elemen-elemen di sekitarnya | Padding elemen tidak tumpang tindih dengan padding elemen lainnya dan hanya mempengaruhi konten dalam elemen tersebut |
+| Pengaruh Terhadap Tata Letak | Memengaruhi tata letak elemen secara eksternal (luar elemen) | Memengaruhi tata letak elemen secara internal (dalam elemen) |
+
+## **Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?**
+
+Perbedaan antara framework CSS Tailwind dan Bootstrap, serta kapan sebaiknya kita menggunakan framework tersebut dapat dilihat dalam tabel berikut ini.
+
+| Aspek                         | Framework Tailwind CSS                            | Framework Bootstrap                               |
+|-------------------------------|---------------------------------------------------|---------------------------------------------------|
+| **Konsep**                  | Mendasarkan pada konsep "utility-first," di mana membangun tampilan dengan menggabungkan kelas-kelas utilitas yang sudah ada untuk mengatur tampilan elemen. | Mendasarkan pada konsep kerangka kerja yang lebih terstruktur dengan komponen yang telah dibuat sebelumnya untuk membangun tampilan. |
+| **Ukuran**                      | Lebih kecil dalam ukuran file CSS karena hanya menghasilkan kode CSS yang dibutuhkan. | Lebih besar dalam ukuran file CSS karena menyertakan komponen yang sudah dibuat sebelumnya. |
+| **Fleksibilitas**               | Memungkinkan tingkat fleksibilitas yang tinggi dalam desain dan tampilan karena dapat menggabungkan kelas-kelas utilitas sesuai kebutuhan. | Lebih terstruktur dan kurang fleksibel dalam hal desain karena komponen Bootstrap memiliki gaya yang sudah ditentukan. |
+| **Kustomisasi**                | Memerlukan penulisan lebih banyak kode HTML untuk mengatur tampilan, tetapi memberikan kustomisasi yang lebih besar. | Memungkinkan kustomisasi dengan mengganti variabel Sass, tetapi tidak sefleksibel Tailwind. |
+| **Penggunaan**                  | Cocok untuk proyek-proyek yang membutuhkan tampilan yang sangat kustomisasi atau memiliki desain yang unik. | Cocok untuk proyek-proyek yang ingin cepat membangun tampilan dengan komponen siap pakai dan tampilan yang konsisten. |
+| **Pembelajaran**                | Memerlukan waktu belajar lebih lama karena perlu menguasai kelas-kelas utilitas dan memahami cara menggunakannya. | Lebih mudah dipelajari karena memiliki dokumentasi yang baik dan komponen yang sudah dibuat sebelumnya. |
+| **Kelengkapan Komponen** | Memerlukan pembuatan komponen dari awal atau menggunakan ekstensi pihak ketiga. | Sudah menyediakan beragam komponen UI yang dapat digunakan dengan mudah. |
+| **Performa**                    | Lebih efisien dalam hal ukuran file CSS dan memungkinkan mengurangi overhead yang tidak perlu. | Memiliki beberapa elemen yang mungkin tidak digunakan dalam proyek Anda, sehingga dapat meningkatkan ukuran file. |
+| **Kapan Sebaiknya Menggunakan**  | - Ketika memiliki waktu untuk menguasai kelas-kelas utilitas dan ingin fleksibilitas dalam desain. - Ketika ingin tampilan dengan kustomisasi yang tinggi atau memiliki desain yang unik. - Ketika ingin mengurangi overhead CSS dengan hanya menggunakan kelas-kelas yang diperlukan. - Ketika ingin mengontrol ukuran file CSS secara ketat. | - Ketika ingin cepat membangun tampilan dengan komponen UI yang sudah ada. - Ketika ingin memastikan tampilan yang konsisten dan memiliki gaya yang sudah ditentukan. - Ketika tidak memiliki banyak waktu untuk kustomisas tampilan. - Ketika menginginkan dokumentasi yang kuat dan banyak dukungan komunitas.|

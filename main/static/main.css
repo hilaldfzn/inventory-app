@@ -1,0 +1,204 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+body {
+    background-color: ghostwhite;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.last-login {
+    top: 40px;
+    right: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #25316D;
+}
+
+.hero-name {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #7e74f1;
+    margin: 0rem 1rem 1rem 0.5rem;
+    text-align: left;
+}
+
+.hero-name span {
+    color: black;
+}
+
+.header-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.logout-button {
+    background-color: #5F6F94;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #25316D;
+    border-radius: 10px;
+    padding: 5px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+    background-color: #25316D;
+}
+
+
+.item-count {
+    background-color: #5F6F94;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #25316D;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 50px auto;
+    max-width: 300px;
+}
+
+.item-count p {
+    margin: 0;
+}
+
+.container-tabel {
+    display: flex; 
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.judul-tabel th {
+    background-color: #5F6F94;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+th, td {
+    font-weight: 400;
+    font-size: 16px;
+    padding: 10px 24px;
+    border: 2px solid #25316D;
+    border-radius: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: white;
+}
+
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+.amount-container {
+    display: flex;
+    align-items: center;
+}
+
+.amount {
+    font-size: 16px;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.decrease-item,
+.increase-item {
+    background-color: #5F6F94;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.decrease-item:hover,
+.increase-item:hover {
+    background-color: #25316D;
+}
+  
+.action-buttons {
+    display: flex;
+    align-items: center;
+}
+  
+.remove-item,
+.edit-btn {
+    margin: 0 10px;
+    background-color: #5F6F94;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+  
+.remove-item:hover,
+.edit-btn:hover {
+    background-color: #25316D;
+}
+  
+  
+tr:last-child {
+    background-color: rgba(95, 196, 95, 0.8);
+}
+
+.add-to-cart {
+    background-color: #5F6F94;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #25316D;
+    border-radius: 10px;
+    margin-top: 50px;
+    padding: 10px 10px;
+}
+
+.footer {
+    background-color: #25316D;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    padding: 2rem 0;
+    margin-top: 40px;
+}
+
+.footer__title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer__social {
+    margin-bottom: 2rem;
+}
+
+.footer__icon {
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 0 1rem;
+}
+
+.footer__copy {
+    font-size: .75rem;
+}
