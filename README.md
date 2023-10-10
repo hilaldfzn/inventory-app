@@ -1166,8 +1166,8 @@ Penggunaan cookies dalam pengembangan web pada umumnya dianggap aman asalkan dil
 # **Tugas 5: Desain Web menggunakan HTML, CSS dan Framework CSS**
 Mengimplementasikan desain web berdasarkan beberapa hal yang telah dipelajari di kelas selama di kelas dan tutorial (CSS, Framework, dsb) serta menjawab beberapa pertanyaan.
 
-## **Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma)**
-Pada proyek Inventory App ini, saya menggunakan eksternal CSS serta bootstrap untuk membuat styling di beberapa fitur. Singkatnya, langkah yang saya lakukan adalah membuat selector untuk mengelompokkan mana saja yang akan di styling dengan model yang sama, apakah ingin keseluruhan diubah atau hanya beberapa bagian saja. Jika sudah, kita mulai styling untuk selectornya.
+## **Kustomisasi desain pada template HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma)**
+Pada proyek Inventory App ini, saya menggunakan eksternal CSS serta Bootstrap untuk membuat styling di beberapa fitur. Singkatnya, langkah yang saya lakukan adalah membuat selector untuk mengelompokkan mana saja yang akan di styling dengan model yang sama, apakah ingin keseluruhan diubah atau hanya beberapa bagian saja. Jika sudah, mulai styling untuk selectornya.
 
 ### **Kustomisasi halaman login, register, dan tambah inventori**
 * Login Page
