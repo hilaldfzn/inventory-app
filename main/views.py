@@ -21,7 +21,7 @@ def show_inventory(request):
         'id' : '2206830542',
         'class' : 'PBP C',
         'list_items' : items,
-        'last_login': request.COOKIES['last_login'],
+        'last_login': request.COOKIES.get('last_login'),
     }
 
     return render(request, 'main.html', context)
