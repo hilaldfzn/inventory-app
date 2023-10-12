@@ -44,7 +44,7 @@
 
     <div class="row">
         <div class="col-12">
-            <table id="product_table" class="table table-bordered"></table>
+            <div id="product_card"></div>
         </div>
     </div>
 
@@ -56,7 +56,7 @@
 
     <div class="row">
       <div class="col-12 text-center">
-          <button type="button" class="btn btn-primary add-product" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
+          <button type="button" class="btn btn-primary add-product" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>
       </div>
     </div>
 </div>
@@ -121,7 +121,7 @@
   }
 
   async function refreshProducts() {
-    document.getElementById("product_table").innerHTML = ""
+    document.getElementById("product_card").innerHTML = ""
     const products = await getProducts()
     const itemCount = document.getElementById("ItemCount");
     const totalItem = products.length;
