@@ -3,11 +3,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.core import serializers
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 from main.forms import ProductForm
 from main.models import InventoryItem
 
@@ -105,28 +106,60 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
-def add_items(request, item_id):
-    if request.method == 'POST' and 'Increment' in request.POST:
-        item = InventoryItem.objects.get(id=item_id)
-
+@csrf_exempt
+def add_amount(request, item_id):
+    if request.method == 'POST':
+        item = InventoryItem.objects.get(pk=item_id)
+        item.user = request.user
         if item.amount > 0:
             item.amount += 1
             item.save()
-    return HttpResponseRedirect(reverse('main:show_inventory'))
+        return HttpResponse(b"ADDED", status=201)
+    
+    return HttpResponseNotFound()
 
-def dec_items(request, item_id):
-    if request.method == 'POST' and 'Decrement' in request.POST:
-        item = InventoryItem.objects.get(id=item_id)
-
+@csrf_exempt
+def decrease_amount(request, item_id):
+    if request.method == 'POST':
+        item = InventoryItem.objects.get(pk=item_id)
+        item.user = request.user
         if item.amount > 1:
             item.amount -= 1
             item.save()
         else:
             item.delete()
-    return HttpResponseRedirect(reverse('main:show_inventory'))
+        return HttpResponse(b"REDUCED", status=201)
+    
+    return HttpResponseNotFound()
 
+@csrf_exempt
 def remove_items(request, item_id):
-    if request.method == 'POST' and 'Remove' in request.POST:
-        item = InventoryItem.objects.get(id=item_id)
+    if request.method == "DELETE":
+        item = InventoryItem.objects.get(pk=item_id, user=request.user)
         item.delete()
-    return HttpResponseRedirect(reverse('main:show_inventory'))
+        return HttpResponse(b"DELETED", status=201)
+    
+    return HttpResponseNotFound()
+
+def get_product_json(request):
+    product_item = InventoryItem.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', product_item))
+
+@csrf_exempt
+def add_product_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        description = request.POST.get("description")
+        price = request.POST.get("price")
+        power = request.POST.get("power")
+        category = request.POST.get("category")
+        user = request.user
+
+        new_product = InventoryItem(name=name, amount=amount, description=description, 
+                                    price=price, power=power, category=category, user=user)
+        new_product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()

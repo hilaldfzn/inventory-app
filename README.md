@@ -358,7 +358,7 @@ Destroying test database for alias 'default'...
 ```
 
 ## **Bagan Client Request and Response - Django**
-![alt-text](static/image/bagan.png)
+![alt-text](assets/bagan.png)
 Proses dimulai ketika seorang client membuka browser dan mengakses situs web yang diinginkannya. Pada tahap ini, web server siap melayani request dari client. Di dalam lingkungan server berbasis Python, Web Server Gateway Interface (WSGI) berperan penting dalam memproses HTTP request dari client. Selanjutnya, ada middleware yang berfungsi sebagai perantara integrasi teknologi yang digunakan dalam proyek web. Middleware ini bertugas memproses request dari client sebelum mengarahkannya ke URL Router. URL Router, yang biasanya diatur dalam file `urls.py`, mengatur routing alamat proyek yang sesuai dengan request client ke fungsi-fungsi yang terletak di `views.py`. Di dalam `views.py`, logika bisnis dan tampilan dari proyek website disusun. Data yang diperlukan untuk tampilan ini diambil dari database yang telah terstruktur menggunakan Object-Relational Mapping (ORM) dalam `models.py`. Selanjutnya, Context Processor berperan dalam mengirimkan data dari `views.py` ke template HTML. Template ini akan memanfaatkan data tersebut untuk menampilkan tampilan depan dari proyek sesuai dengan alur logika dari template tags. Setelah semua komponen tampilan disusun, middleware kembali berperan dalam memproses response sebelum dikirimkan kembali ke client. WSGI kembali berperan dalam memproses HTTP response dari server berbasis Python. Akhirnya, web server bertugas melayani response dari server dan mengirimkannya kepada client, sehingga client dapat melihat hasil dari website yang diaksesnya.
 
 ## **Mengapa kita perlu menggunakan *virtual environment*?**
@@ -674,7 +674,7 @@ urlpatterns = [
 ...
 ```
 Berikut ini adalah tampilan yang dihasilkan setelah menambahkan fitur di atas:
-![alt-text](static/image/bonus-jumlah-item.jpg)
+![alt-text](assets/bonus-jumlah-item.jpg)
 
 ## **Apa perbedaan antara form `POST` dan form `GET` dalam Django?**
 Dalam Django, metode `POST` dan `GET` adalah dua pendekatan berbeda untuk mengirim data antara browser dan web server saat mengirim informasi dari form HTML. Metode `POST` digunakan untuk mengirim data dari browser ke web server dengan cara yang lebih aman dan tersembunyi, karena data dikirimkan dalam badan permintaan HTTP sehingga data tidak terlihat oleh pengguna selama proses pengiriman. Contohnya, ketika mengirim kata sandi atau informasi pribadi. Di sisi lain, metode `GET` mengirim data sebagai bagian dari *URL*, sehingga data dapat terlihat oleh siapa pun yang melihat *URL*. Ini cocok untuk operasi baca saja, seperti pencarian atau pengiriman parameter melalui *URL*. Pengaksesan data yang dikirim melalui metode `GET` di Django dapat menggunakan objek `request.GET`.
@@ -700,15 +700,15 @@ Karena JSON merupakan format teks yang ringan dan fleksibilitas struktur data, i
 
 2. Buka Postman dan buat sebuah *request* baru dengan *method* `GET` dan  isi dengan beberapa *url* sebagai berikut untuk mengetes apakah data terkirimkan dengan baik.
     * HTML (http://localhost:8000)
-    ![alt-text](static/image/Postman-html.jpg)
+    ![alt-text](assets/Postman-html.jpg)
     * XML (http://localhost:8000/xml)
-    ![alt-text](static/image/Postman-xml.jpg)
+    ![alt-text](assets/Postman-xml.jpg)
     * JSON (http://localhost:8000/json)
-    ![alt-text](static/image/Postman-json.jpg)
+    ![alt-text](assets/Postman-json.jpg)
     * XML by ID (http://localhost:8000/xml/[id])
-    ![alt-text](static/image/Postman-xml-3.jpg)
+    ![alt-text](assets/Postman-xml-3.jpg)
     * JSON by ID (http://localhost:8000/json/[id])
-    ![alt-text](static/image/Postman-json-3.jpg)
+    ![alt-text](assets/Postman-json-3.jpg)
 <br/>
 
 # **Tugas 4: Implementasi Autentikasi, Session, dan Cookies pada Django**
@@ -905,10 +905,10 @@ Mengimplementasikan konsep authentication, session, cookies dan menerapkan beber
 
 ## **Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal**
 Username: hilalfzn
-![alt-text](static/image/user1.jpg)
+![alt-text](assets/user1.jpg)
 
 Username: hilaljuga
-![alt-text](static/image/user2.jpg)
+![alt-text](assets/user2.jpg)
 
 ## **Menghubungkan model `InventoryItem` dengan `User`**
 1. Buka `models.py` dan tambahkan import seperti potongan kode di bawah ini.
@@ -991,7 +991,7 @@ Username: hilaljuga
     ```
 5. Jalankan perintah `python manage.py runserver` dan cobalah untuk login. Data *last login* akan muncul di halaman *main*.
 6. Untuk memeriksa data cookie `last_login`, gunakan fitur *inspect element* dan buka tab *Application* atau *Storage*. Setelah itu, klik opsi *Cookies* untuk melihat semua data cookies yang tersedia. Selain `last_login`, kita juga dapat melihat data lain seperti `sessionid` dan `csrftoken`. Berikut ini adalah contoh tampilannya.
-    ![alt-text](static/image/data-cookies.jpg)
+    ![alt-text](assets/data-cookies.jpg)
 
 ## **Bonus**
 1. Tambahkan tombol dan fungsi untuk menambahkan amount suatu objek sebanyak satu dan tombol untuk mengurangi jumlah stok suatu objek sebanyak satu.
@@ -1084,7 +1084,7 @@ Username: hilaljuga
         Note: Tambahkan juga table header untuk menyesuaikan isi table data
 
 Berikut ini adalah tampilan *main* setelah mengimplementasikan bonus.
-![alt-text](static/image/bonus-add-decrease-remove-item.jpg)
+![alt-text](assets/bonus-add-decrease-remove-item.jpg)
 
 ## **Apa itu Django `UserCreationForm`, dan jelaskan apa kelebihan dan kekurangannya?**
 `UserCreationForm` adalah formulir bawaan Django yang digunakan untuk membuat pengguna baru. Formulir ini merupakan turunan dari `ModelForm` dan dirancang khusus untuk model *User* bawaan Django. Formulir ini biasanya digunakan pada halaman registrasi untuk mempermudah proses pembuatan akun pengguna baru.
@@ -1171,10 +1171,10 @@ Pada proyek Inventory App ini, saya menggunakan eksternal CSS serta Bootstrap un
 
 ### **Kustomisasi halaman login, register, dan tambah inventori**
 * Login Page
-![alt-text](static/image/login-page.jpg)
+![alt-text](assets/login-page.jpg)
 
 * Register Page
-![alt-text](static/image/register-page.jpg)
+![alt-text](assets/register-page.jpg)
 
 * Add Item Page
 ![alt-text](static/image/add-item-page.jpg)
