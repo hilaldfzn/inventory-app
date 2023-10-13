@@ -1735,6 +1735,38 @@ Penerapan asynchronous programming pada AJAX (Asynchronous JavaScript and XML) a
     * Dalam asynchronous programming, kode kita akan tetap melanjutkan eksekusi tanpa harus menunggu respons dari server. Ini memungkinkan interaksi pengguna dengan halaman web tetap lancar sementara data dari server diambil dan diproses secara asinkron.
     * Setelah respons dari server diterima, kita dapat memanipulasi DOM atau menjalankan tindakan lainnya sesuai dengan data yang diterima.
 
+## **Bonus: Implementasi AJAX DELETE**
+Buka file `main.html` dan tambahkan potongan kode di bawah ini pada tag `<script>`.
+```js
+async function refreshProducts() {
+    ...
+    let htmlString = ``
+    products.forEach((item) => {
+    htmlString += `
+        <div class="col-3">
+            <div class="product-card">
+                ...
+                <div class="card-footer">
+                    ...
+                    <button class="btn btn-sm btn-danger delete-button" onclick="removeItem(${item.pk})">Remove</button>
+                </div>
+            </div>
+        </div>`;
+    })
+
+    document.querySelector(".card-container").innerHTML = htmlString;
+}
+
+// Implementasi AJAX DELETE
+function removeItem(itemId) {
+    fetch(`delete-product-ajax/${itemId}/`, {
+        method: "DELETE",
+    }).then(refreshProducts)
+
+    return false
+}
+```
+
 ## **Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan**
 Perbandingan kedua teknologi tersebut dijelaskan daam tabel berikut. 
 
