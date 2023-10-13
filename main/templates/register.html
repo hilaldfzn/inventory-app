@@ -1,14 +1,136 @@
 {% extends 'base.html' %}
 
-{% load static %}
-
 {% block meta %}
     <title>Register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-    <link rel="stylesheet"  href="{% static 'css/register.css' %}">
+    
+    <style>
+        body {
+            background-image: url("https://cutewallpaper.org/21/astroneer-wallpapers/System-Era-Softworks.png");
+            background-size: 100% 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            color: #23004D;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 40px;
+            font-size: small;
+            font-weight: bold;
+        }
+
+        .register {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .register-content {
+            height: 450px;
+            max-width: 400px;
+            margin: 50px 0px 50px 0px;
+        }
+
+        .register-forms {
+            position: relative;
+            height: 368px;
+        }
+
+        .register-field {
+            box-sizing: border-box;
+            padding: 2rem;
+            background-color: rgba(242, 242, 242, 0.8);
+            border-radius: 1rem;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(35,0,77,.2);
+        }
+
+        .register-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #23004D;
+        }
+
+        .register-box {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            column-gap: .5rem;
+            padding: 1.125rem 1rem;
+            background-color: #FFF;
+            margin-top: 1rem;
+            border-radius: .5rem;
+        }
+
+        .register__icon {
+            font-size: 1.5rem;
+            color: #9D4BFF;
+        }
+
+        .form-control {
+            border: none;
+            outline: none;
+            font-size: .938rem;
+            font-weight: 700;
+            color: #23004D;
+        }
+
+        .form-control::placeholder {
+            font-size: .938rem;
+            font-family: 'Roboto', sans-serif;
+            color: #A49EAC;
+        }
+
+        .register_btn {
+            padding: 12px 24px;
+            margin: 2rem 0;
+            background-color: #9D4BFF;
+            color: #FFF;
+            font-weight: 600;
+            text-align: center;
+            border-radius: .5rem;
+            transition: .3s;
+            border: 2px solid #25316D;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .register_btn:hover {
+            background-color: #23004D;
+        }
+
+        .register-account, .login-button {
+            font-weight: 600;
+            font-size: .813rem;
+        }
+
+        .register-account {
+            color: #23004D;
+        }
+
+        .login-button {
+            color: #9D4BFF;
+            cursor: pointer;
+        }
+    </style>
 {% endblock meta %}
 
 {% block content %}
