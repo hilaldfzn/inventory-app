@@ -115,14 +115,10 @@
         margin-top: 100px;
     }
 
-    .pos {
-        display: flex;
-        justify-content: center;
-    }
     .card-container {
         flex-wrap: wrap;
         justify-content: space-around;
-        margin: 0 auto;
+        margin: auto;
         gap: 20px;
         max-width: 1200px;
     }
@@ -134,8 +130,11 @@
         padding: 15px;
     }
 
+    .col-3:last-child .product-card {
+        background-color: rgba(95, 196, 95, 0.8);
+    }
+
     .product-card {
-        background-color: #fff;
         border: 1px solid #ddd;
         padding: 15px;
         margin: 0 auto;
@@ -158,6 +157,7 @@
     .diff-color {
       color: #7e74f1;
     }
+
     .card-footer {
         margin-top: 15px;
         display: flex;
@@ -217,10 +217,8 @@
         </div>
     </div>
 
-    <div class="pos">
-      <div class="row card-container">
-        <!-- Kode JavaScript akan menempatkan kartu produk di sini -->
-      </div> 
+    <div class="row card-container">
+      <!-- Kode JavaScript akan menempatkan kartu produk di sini -->
     </div> 
 
     <div class="row">
@@ -301,27 +299,26 @@
     htmlString += `
       <div class="col-3">
         <div class="product-card">
-            <h3>${item.fields.name}</h3>
-            <a href="edit-product/${item.pk}">
-              <button class="btn-edit">✏️</button>
-            </a>
+          <h3>${item.fields.name}</h3>
+          <a href="edit-product/${item.pk}">
+            <button class="btn-edit">✏️</button>
+          </a>
 
-            <p>Amount: ${item.fields.amount}</p>
-            <p>Price: ${item.fields.price} BP</p>
-            <p>Power: ${item.fields.power}</p>
-            <p>Category: ${item.fields.category}</p>
-            <p class="diff-color">Description: ${item.fields.description}</p>
-            <div class="card-footer">
-              <button class="btn btn-sm btn-success add-button" onclick="addAmount(${item.pk})">Add</button>
-              <button class="btn btn-sm btn-warning decrease-button" onclick="decreaseAmount(${item.pk})">Decrease</button>
-              <button class="btn btn-sm btn-danger delete-button" onclick="removeItem(${item.pk})">Remove</button>
-            </div>
+          <p>Amount: ${item.fields.amount}</p>
+          <p>Price: ${item.fields.price} BP</p>
+          <p>Power: ${item.fields.power}</p>
+          <p>Category: ${item.fields.category}</p>
+          <p class="diff-color">Description: ${item.fields.description}</p>
+          <div class="card-footer">
+            <button class="btn btn-sm btn-success add-button" onclick="addAmount(${item.pk})">Add</button>
+            <button class="btn btn-sm btn-warning decrease-button" onclick="decreaseAmount(${item.pk})">Decrease</button>
+            <button class="btn btn-sm btn-danger delete-button" onclick="removeItem(${item.pk})">Remove</button>
           </div>
+        </div>
       </div>`;
     })
 
     document.querySelector(".card-container").innerHTML = htmlString;
-
   }
 
   function addProduct() {
@@ -350,6 +347,7 @@
       return false
   }
 
+  // Implementasi AJAX DELETE
   function removeItem(itemId) {
     fetch(`delete-product-ajax/${itemId}/`, {
           method: "DELETE",

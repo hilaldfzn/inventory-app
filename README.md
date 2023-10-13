@@ -1667,6 +1667,38 @@ Menambahkan JavaScript dan Asynchronous JavaScript ke dalam aplikasi `Inventory 
 ## **Melakukan perintah collectstatic**
 Untuk melakukan perintah `collectstatic` untuk mengumpulkan file static dari setiap aplikasi di proyek ini, cukup dengan melakukan perintah `python manage.py collectstatic` pada terminal.
 
+## **Bonus: Implementasi AJAX DELETE**
+Buka file `main.html` dan tambahkan potongan kode di bawah ini pada tag `<script>`.
+```js
+async function refreshProducts() {
+    ...
+    let htmlString = ``
+    products.forEach((item) => {
+    htmlString += `
+        <div class="col-3">
+            <div class="product-card">
+                ...
+                <div class="card-footer">
+                    ...
+                    <button class="btn btn-sm btn-danger delete-button" onclick="removeItem(${item.pk})">Remove</button>
+                </div>
+            </div>
+        </div>`;
+    })
+
+    document.querySelector(".card-container").innerHTML = htmlString;
+}
+
+// Implementasi AJAX DELETE
+function removeItem(itemId) {
+    fetch(`delete-product-ajax/${itemId}/`, {
+        method: "DELETE",
+    }).then(refreshProducts)
+
+    return false
+}
+```
+
 ## **Jelaskan perbedaan antara asynchronous programming dengan synchronous programming**
 *Asynchronous programming* dan *synchronous programming* adalah dua pendekatan yang berbeda dalam proses menjalankan program. Secara singkat, *asynchronous programming* adalah proses jalannya program yang dapat dilakukan secara bersamaan tanpa harus menunggu proses antrian. Sementara itu, *synchronous programming* adalah proses jalannya program secara sequential, yang berarti program berjalan berdasarkan antrian ekseskusi program.
 
