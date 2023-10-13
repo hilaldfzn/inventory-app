@@ -4,7 +4,7 @@
 **2206830542**<br/>
 **PBP C**<br/>
 
-Link deployment untuk menuju aplikasi Inventory App dapat diakses melalui [Inventory App](https://inventory-app.adaptable.app/main/).
+Link deployment untuk menuju aplikasi Inventory App dapat diakses melalui [Inventory App](http://muhammad-hilal21-tugas.pbp.cs.ui.ac.id/).
 
 # **Tugas 2: Implementasi Model-View-Template (MVT) pada Django**
 Mengimplementasikan Model-View-Template (MVT) Django dan menerapkan beberapa konsep yang telah dipelajari di kelas serta menjawab beberapa pertanyaan.
@@ -1664,10 +1664,91 @@ Menambahkan JavaScript dan Asynchronous JavaScript ke dalam aplikasi `Inventory 
     }
     ```
 
+## **Melakukan perintah collectstatic**
+Untuk melakukan perintah `collectstatic` untuk mengumpulkan file static dari setiap aplikasi di proyek ini, cukup dengan melakukan perintah `python manage.py collectstatic` pada terminal.
+
 ## **Jelaskan perbedaan antara asynchronous programming dengan synchronous programming**
+*Asynchronous programming* dan *synchronous programming* adalah dua pendekatan yang berbeda dalam proses menjalankan program. Secara singkat, *asynchronous programming* adalah proses jalannya program yang dapat dilakukan secara bersamaan tanpa harus menunggu proses antrian. Sementara itu, *synchronous programming* adalah proses jalannya program secara sequential, yang berarti program berjalan berdasarkan antrian ekseskusi program.
+
+Perbedaan antara asynchronous programming dan synchronous programming diejlaskan dalam tabel berikut.
+
+| Perbedaan                            | Asynchronous Programming            | Synchronous Programming          |
+|-------------------------------------|-----------------------------------|--------------------------------|
+| Cara eksekusi program                    | Tugas-tugas atau operasi-operasi yang memerlukan waktu (seperti permintaan jaringan atau operasi I/O) dapat dijalankan secara bersamaan, sehingga tidak menghentikan eksekusi program utama. | Tugas-tugas dieksekusi secara berurutan, yang berarti setiap tugas harus menunggu tugas sebelumnya selesai sebelum tugas berikutnya dapat dimulai. |
+| Blocking                           | Biasanya, operasi yang memerlukan waktu dalam asynchronous programming tidak menghalangi utas utama atau utas pemanggil, sehingga program dapat melanjutkan eksekusi lainnya. | Operasi yang memerlukan waktu dalam synchronous programming dapat menghalangi eksekusi program sampai operasi tersebut selesai. Ini bisa menyebabkan program tampak "tertahan" atau "menggantung" jika ada tugas yang memakan waktu lama. |
+| Manajemen I/O                      | Asynchronous programming sering digunakan untuk menangani operasi I/O yang memerlukan waktu, seperti membaca atau menulis file, permintaan jaringan, atau kueri database, tanpa menghalangi utas utama. | Synchronous programming dapat mengharuskan utas utama untuk menunggu selesainya operasi I/O sebelum melanjutkan eksekusi. |
+| Kecepatan Eksekusi                 |Program cenderung berjalan lebih cepat jika ada banyak tugas yang dapat dijalankan secara bersamaan, terutama dalam situasi yang melibatkan operasi I/O yang memerlukan waktu. | Program dapat berjalan lebih lambat karena tugas-tugas harus menunggu satu sama lain, dan ini dapat memblok program utama. |
+| Kesulitan dalam Pengembangan        | Asynchronous programming dapat menjadi lebih sulit untuk dikembangkan dan memerlukan manajemen yang cermat terhadap alur program dan penanganan kesalahan yang melibatkan tugas yang berjalan secara asinkron. | Synchronous programming cenderung lebih mudah untuk dikembangkan karena alur program lebih terstruktur dan lebih mudah diikuti. |
+| Contoh Pemakaian                    | Node.js adalah contoh yang sering digunakan untuk asynchronous programming, di mana JavaScript dapat menjalankan operasi I/O secara asinkron. | Java atau C# adalah contoh bahasa yang sering digunakan untuk synchronous programming, di mana operasi I/O dapat dijalankan secara sinkron. |
+
 
 ## **Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini**
+*Event-driven programming* adalah metode pemrograman di mana alur program dikendalikan oleh kejadian yang terjadi. Dalam pendekatan ini, program tidak terus-menerus menjalankan kode, melainkan menunggu terjadinya peristiwa sebelum melanjutkan eksekusi. Hal memungkinkan program menjadi lebih responsif, karena program tidak harus terus-menerus menjalankan kode, melainkan menunggu peristiwa yang sesuai untuk meresponsnya secara tepat. Dalam program saya, contoh penerapan paradigma *event-driven programming* terdapat pada `main.html` adalah
+```html
+<button class="btn btn-sm btn-warning decrease-button" onclick="decreaseAmount(${item.pk})">Decrease</button>
+```
+Pada kode diatas button diterapkan *event-driven programming* karena ada tambahan property onclick yang membuat button akan mentrigger berjalannya fungsi decreaseAmount() yang ada didalam tag `<scripts>`.
 
 ## **Jelaskan penerapan asynchronous programming pada AJAX**
+Penerapan asynchronous programming pada AJAX (Asynchronous JavaScript and XML) adalah salah satu aspek fundamental dalam penggunaan AJAX dalam pengembangan web. Dalam konteks AJAX, asynchronous programming memungkinkan permintaan data ke server web dan pemrosesan respons server dilakukan secara non-blokir, sehingga halaman web tetap responsif dan tidak mengalami pembekuan saat menunggu respons dari server. Berikut adalah cara asynchronous programming diterapkan pada AJAX: <br/>
+1. Menggunakan Objek XMLHttpRequest atau Fetch API <br/>
+    * Biasanya, dalam asynchronous programming dengan AJAX, kita akan menggunakan objek XMLHttpRequest atau Fetch API (lebih modern) untuk mengirim permintaan ke server dan menerima respons.
+    * Contoh penggunaan Fetch API dalam JavaScript modern:
+        ```js
+        fetch('https://example.com/data')
+        .then(response => {
+            if (!response.ok) {
+            throw new Error('Terjadi kesalahan saat mengambil data.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Lakukan sesuatu dengan data yang diterima dari server
+        })
+        .catch(error => {
+            // Tangani kesalahan jika ada
+        });
+        ```
+2. Menggunakan Callback, Promise, atau async/await <br/>
+    * Biasanya, kita akan menggunakan callback, promise, atau async/await untuk menangani respons dari server dan menghindari pembekuan (blocking) antarmuka pengguna.
+    * Contoh penggunaan promise dengan Fetch API
+        ```js
+        function fetchData() {
+            return fetch('https://example.com/data')
+                .then(response => {
+                if (!response.ok) {
+                    throw new Error('Terjadi kesalahan saat mengambil data.');
+                }
+                return response.json();
+                });
+            }
+
+            fetchData()
+            .then(data => {
+                // Lakukan sesuatu dengan data yang diterima dari server
+            })
+            .catch(error => {
+                // Tangani kesalahan jika ada
+        });
+        ```
+3. Menangani Respons Asynchronously <br>
+    * Dalam asynchronous programming, kode kita akan tetap melanjutkan eksekusi tanpa harus menunggu respons dari server. Ini memungkinkan interaksi pengguna dengan halaman web tetap lancar sementara data dari server diambil dan diproses secara asinkron.
+    * Setelah respons dari server diterima, kita dapat memanipulasi DOM atau menjalankan tindakan lainnya sesuai dengan data yang diterima.
 
 ## **Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan**
+Perbandingan kedua teknologi tersebut dijelaskan daam tabel berikut. 
+
+| Perbandingan                 | Fetch API                                                | jQuery                                                  |
+|-----------------------------|---------------------------------------------------------|---------------------------------------------------------|
+| **Library**                 | Fetch API adalah bagian dari JavaScript yang disediakan oleh browser modern secara bawaan, sehingga tidak memerlukan library tambahan. | jQuery adalah library JavaScript yang memiliki banyak fitur termasuk dukungan untuk AJAX sehingga pengembang perlu mendownload dan menyertakan pustaka jQuery dalam proyek Anda. |
+| **Kompatibilitas**           | Fetch API umumnya kompatibel dengan semua browser modern, tetapi memerlukan manajemen lebih lanjut untuk mendukung browser lama. | jQuery dirancang untuk memastikan kompatibilitas lintas browser dan memiliki dukungan yang baik untuk semua browser. |
+| **Kode yang Lebih Ringkas**       | Fetch API biasanya memerlukan lebih sedikit kode karena menggunakan janji (Promise) untuk menangani respons, yang membuat kode menjadi lebih bersih. | jQuery menggunakan pendekatan berbasis peristiwa (event-based) dan memerlukan lebih banyak kode untuk menangani permintaan dan respons. |
+| **Performa**                | Fetch API cenderung memberikan performa yang lebih baik karena lebih ringan dan lebih dekat dengan JavaScript asli. | jQuery bisa sedikit lebih lambat dibandingkan Fetch API karena tingkat abstraksi yang lebih tinggi dan jumlah kode yang lebih besar. |
+| **Fleksibilitas**           | Fetch API memberikan lebih banyak fleksibilitas dalam mengendalikan permintaan dan respons dengan lebih banyak pilihan konfigurasi. | jQuery mempersembahkan abstraksi yang lebih tinggi dan lebih sederhana yang dapat membuatnya lebih mudah digunakan bagi pengembang pemula. |
+| **Ukuran File**             | Fetch API lebih kecil dalam hal ukuran file karena tidak ada kebutuhan untuk menyertakan pustaka tambahan. | jQuery lebih besar dalam ukuran file karena Anda perlu menyertakan pustaka jQuery dalam proyek Anda. |
+| **Ekosistem**               | Fetch API bekerja dengan teknologi modern seperti janji (Promise) dan dapat berintegrasi dengan framework JavaScript modern. | jQuery memiliki ekosistem yang besar dengan banyak plugin dan sumber daya tambahan yang sudah ada. |
+| **Tingkat Populeritas**      | Fetch API semakin populer karena lebih banyak pengembang beralih ke teknologi JavaScript asli. | Meskipun masih digunakan, popularitas jQuery telah menurun seiring dengan peningkatan Fetch API dan penggunaan JavaScript modern. |
+
+Pendapat Pribadi:
+* Jika tujuan kita adalah untuk menciptakan aplikasi yang efisien serta menghindari ketergantungan pada library eksternal yang tidak esensial, Fetch API bisa menjadi solusi yang ideal. Fetch API lebih simpel, terkini, dan lebih teratur dalam mengelola operasi yang bersifat asinkron.
+* Sebaliknya, jika kita harus menangani kompatibilitas dengan browser lama atau ingin memanfaatkan struktur dan plugin yang sudah ada, jQuery mungkin lebih cocok digunakan.
