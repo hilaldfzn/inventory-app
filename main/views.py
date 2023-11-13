@@ -141,10 +141,6 @@ def remove_items(request, item_id):
     
     return HttpResponseNotFound()
 
-def get_product_json(request):
-    product_item = InventoryItem.objects.filter(user=request.user)
-    return HttpResponse(serializers.serialize('json', product_item))
-
 @csrf_exempt
 def add_product_ajax(request):
     if request.method == 'POST':
@@ -163,3 +159,7 @@ def add_product_ajax(request):
         return HttpResponse(b"CREATED", status=201)
 
     return HttpResponseNotFound()
+
+def get_product_json(request):
+    product_item = InventoryItem.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', product_item))
