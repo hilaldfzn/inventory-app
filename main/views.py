@@ -1,4 +1,5 @@
 import datetime
+import json
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
@@ -163,3 +164,26 @@ def add_product_ajax(request):
 def get_product_json(request):
     product_item = InventoryItem.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', product_item))
+
+@csrf_exempt
+def create_product_flutter(request):
+    if request.method == 'POST':
+        
+        data = json.loads(request.body)
+
+        new_product = InventoryItem.objects.create(
+            user = request.user,
+            name = data["name"],
+            price = int(data["price"]),
+            description = data["description"]
+        )
+
+        new_product.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+    
+def show_json_by_user(request):
+    data = InventoryItem.objects.filter(user = request.user)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
