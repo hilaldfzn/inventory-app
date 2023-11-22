@@ -71,6 +71,11 @@ def show_json_by_id(request, id):
     data = InventoryItem.objects.filter(pk=id)
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
+def get_product_json(request):
+    product_item = InventoryItem.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', product_item))
+
+@csrf_exempt
 def register(request):
     form = UserCreationForm()
 
@@ -84,6 +89,7 @@ def register(request):
     context = {'form':form}
     return render(request, 'register.html', context)
 
+@csrf_exempt
 def login_user(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -161,10 +167,6 @@ def add_product_ajax(request):
 
     return HttpResponseNotFound()
 
-def get_product_json(request):
-    product_item = InventoryItem.objects.filter(user=request.user)
-    return HttpResponse(serializers.serialize('json', product_item))
-
 @csrf_exempt
 def create_product_flutter(request):
     if request.method == 'POST':
@@ -174,6 +176,9 @@ def create_product_flutter(request):
         new_product = InventoryItem.objects.create(
             user = request.user,
             name = data["name"],
+            category = data["category"],
+            amount = int(data["amount"]),
+            power = int(data["power"]),
             price = int(data["price"]),
             description = data["description"]
         )
@@ -183,7 +188,3 @@ def create_product_flutter(request):
         return JsonResponse({"status": "success"}, status=200)
     else:
         return JsonResponse({"status": "error"}, status=401)
-    
-def show_json_by_user(request):
-    data = InventoryItem.objects.filter(user = request.user)
-    return HttpResponse(serializers.serialize("json", data), content_type="application/json")

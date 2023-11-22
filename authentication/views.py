@@ -44,7 +44,6 @@ def register(request):
 
     return JsonResponse({"username": user.username, "status": True, "message": "Register successful!"}, status=201)
     
-    
 @csrf_exempt
 def logout(request):
     username = request.user.username
